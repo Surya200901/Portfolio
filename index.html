@@ -1,292 +1,409 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">   
-  <title>Venkata Surya Settipalli - Portfolio</title>   
-  <!--
-    - favicon   
-  -->  
-  <link rel="shortcut icon" href="./assets/images/logo.ico" type="image/x-icon">
-  <!--
-    - custom css link
-  -->
-  <link rel="stylesheet" href="./assets/css/style.css">
-  <!--
-    - google font link
-  -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Venkata Surya's Portfolio</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+        /* Existing styles */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        header {
+          background: linear-gradient(to right, #4facfe, #00f2fe);
+          color: white;
+          padding: 20px 0;
+          text-align: center;
+          box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+      }
+      
+      header h1 {
+          margin: 0;
+          font-size: 3em;
+          text-align: center;
+      }
+      
+      header p {
+          font-size: 1.2em;
+          margin-top: 10px;
+          text-align: center;
+      }
+
+        nav {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 1em;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: #4facfe;
+        }
+
+        .hamburger {
+          display: none;
+          font-size: 2rem;
+          cursor: pointer;
+        }
+    
+      .nav-links {
+          display: flex;
+          justify-content: center;
+          gap: 20px;
+        }
+
+        section {
+          text-align: center;
+            padding: 20px 20px;
+        }
+
+        .section-title {
+            font-size: 2.5em;
+            color: #333;
+            text-align: center;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+
+        .about-me {
+            text-align: center;
+        }
+
+        .about-me img {
+            width: 150px;
+            border-radius: 50%;
+            margin-bottom: 20px;
+            border: 4px solid #3a7bd5;
+        }
+
+        .projects, .skills, .certificates, .achievements, .hobbies, .testimonials {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .card {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 15px;
+            width: 280px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+        }
+
+        .card img {
+            width: 100%;
+            border-radius: 10px;
+            object-fit: cover;
+            margin-bottom: 10px;
+        }
+
+        footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+
+        footer a {
+            color: #4facfe;
+            text-decoration: none;
+        }
+
+        @media (max-width: 768px) {
+            .projects, .skills, .certificates, .achievements, .hobbies, .testimonials {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .card {
+                width: 90%;
+            }
+
+            .section-title {
+                font-size: 2em;
+                margin-bottom: 15px;
+            }
+        }
+
+        .education-certifications {
+          display: flex;
+          justify-content: center; /* Align items in the center horizontally */
+          gap: 20px; /* Add space between cards */
+          flex-wrap: wrap; /* Allow wrapping on smaller screens */
+      }
+      
+      /* Centered Heading Style */
+      /* Ensure proper centering of headings */
+      .centered-heading {
+        font-size: 2.5em;
+        font-weight: bold;
+        color: #333;
+        margin: 0 auto; /* Center horizontally */
+        margin-bottom: 30px;
+        text-transform: uppercase;
+        text-align: center; /* Center text */
+        position: relative;
+        width: 100%; /* Ensure it takes up full width for alignment */
+      }
+
+      .centered-heading::after {
+        content: '';
+        display: block;
+        width: 80px;
+        height: 4px;
+        background: #4facfe;
+        margin: 10px auto; /* Center the underline */
+      }
+
+      /* Animations */
+      @keyframes fadeIn {
+        from {
+            opacity: 0;
+        }
+        to {
+            opacity: 1;
+        }
+      }
+
+      @keyframes slideInFromBottom {
+        from {
+            transform: translateY(20px);
+            opacity: 0;
+        }
+        to {
+            transform: translateY(0);
+            opacity: 1;
+        }
+      }
+
+      /* Responsive styling */
+      @media (max-width: 768px) {
+        header h1 {
+            font-size: 2.5em;
+        }
+
+        nav a {
+            font-size: 0.9em;
+        }
+
+        .card {
+            width: 90%;
+        }
+
+        .centered-heading {
+            font-size: 2.5em;
+        }
+      }
+
+      /* Mobile Navigation */
+  @media (max-width: 768px) {
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        background: #333;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        right: 0;
+        text-align: center;
+        padding: 10px 0;
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+
+    .hamburger {
+        display: block;
+        position: absolute;
+        right: 20px;
+        top: 10px;
+        color: white;
+    }
+  }
+
+    </style>
 </head>
 <body>
-  <!--
-    - #MAIN
-  -->
-  <main>
-    <!--
-      - #SIDEBAR
-    -->
-    <aside class="sidebar" data-sidebar>
-      <div class="sidebar-info">
-        <figure class="avatar-box">
-          <img src="images/profile.jpg" alt="Surya Settipalli" width="80">
-        </figure>
-        <div class="info-content">
-          <h1 class="name" title="Surya Settipalli">Venkata Surya Settipalli</h1>
-          <h2><p class="title">Java Full Stack Enthusiast</p></h2>
-        </div>
-        <button class="info_more-btn" data-sidebar-btn>
-          <span>Show Contacts</span>
-          <ion-icon name="chevron-down"></ion-icon>
-        </button>
-      </div>
-      <div class="sidebar-info_more">
-        <div class="separator"></div>
-        <ul class="contacts-list">
-          <li class="contact-item">
-            <div class="icon-box">
-              <ion-icon name="mail-outline"></ion-icon>
-            </div>
-            <div class="contact-info">
-              <p class="contact-title">Email</p>
-              <a href="settipallisurya1111@gmail.com" class="contact-link">settipallisurya1111@gmail.com</a>
-            </div>
-          </li>
-          <li class="contact-item">
-            <div class="icon-box">
-              <ion-icon name="location-outline"></ion-icon>
-            </div>
-            <div class="contact-info">
-              <p class="contact-title">Location</p>
-              <address>Vijayawada, Andhra Pradesh, India</address>
-            </div>
-          </li>
-        </ul>
-        <div class="separator"></div>
-        <ul class="social-list">
-          <li class="social-item">
-            <a href="https://github.com/Surya200901" target="_blank" class="social-link">
-              <ion-icon name="logo-github"></ion-icon>
-            </a>
-          </li>
-            <li class="social-item">
-            <a href="https://www.linkedin.com/in/surya-settipalli-87b0b4240" target="_blank" class="social-link">
-              <ion-icon name="logo-linkedin"></ion-icon>
-            </a>
-          </li>
- <li class="social-item">
-            <a href="mailto:settipallisurya1111@gmail.com" target="_blank" class="social-link">
-              <ion-icon name="mail-outline"></ion-icon>
-            </a>
-          </li> 
-        </ul>
-      </div>
-    </aside>
-    <!--
-      - #main-content
-    -->
-    <div class="main-content">
-      <!--
-        - #NAVBAR
-      -->
-      <nav class="navbar">
-        <ul class="navbar-list">        
-          <li class="navbar-item">
-            <button class="navbar-link  active" data-nav-link>ABOUT</button>
-          </li>
-           <li class="navbar-item">
-            <button class="navbar-link" data-nav-link>PROJECT</button>
-          </li>
-          <li class="navbar-item">
-            <button class="navbar-link" data-nav-link>CERTIFICATIONS</button>
-          </li>    
-          <li class="navbar-item">
-            <button class="navbar-link" data-nav-link>CONTACT</button>
-          </li>
-        </ul>
-      </nav>
-      <!--
-        - #ABOUT
-      -->
-      <article class="about  active" data-page="about">
-        <header>
-          <h1 class="h2 article-title">ABOUT ME</h1>
-        </header>
-        <section class="about-text">   <br>      
-<p> Hello! I'm <b>Venkata Surya</b>, a passionate software developer with skills in Java, Spring Boot, MySQL, HTML, CSS, and JavaScript. I create real-world solutions and am eager to collaborate on exciting projects. 
-  I love turning ideas into reality and always strive to deliver great results. Let's work together to create something amazing!
-   </p>
-<p><h2><b>Skills</b></h2></p>
-<p>• <b> Development Tools:</b>&nbsp &nbsp Eclipse, Spring STS, Intelij, VS Code</p>
-<p>•<b> Programming Languages:</b>&nbsp &nbsp Java, J2EE, JDBC, Spring Boot </p>
-<p>•<b> Database:</b> &nbsp &nbsp MySQL</p>
-<p>•<b> Version Control:</b> &nbsp &nbsp GitHub, Jira, bitbucket</p>
-          <BR>
- <section class="timeline">
-          <div class="title-wrapper">
-            <div class="icon-box">
-              <ion-icon name="book-outline"></ion-icon>
-            </div>
-            <h3 class="h3">EDUCATION</h3>
-          </div>
-          <ol class="timeline-list">
-            <li class="timeline-item">
-              <h4 class="h4 timeline-item-title">KAKARAPARTI BHAVANARAYANA COLLEGE(AUTONOMOUS)</h4>
-              <span><pre><b>Master of Computer Applications   2022 — 2024</b></pre> </span>
-              <p class="timeline-text">
-              Grade: 9.3
-                </br>
-              </p>
-            </li>
-            <li class="timeline-item">
-              <h4 class="h4 timeline-item-title">ANDHRA LOYOLA COLLEGE(AUTONOMOUS)</h4>
-              <span><pre><b>B.sc (MSCS)   2019 — 2022</b></pre> </span>
-              <p class="timeline-text">
-              Grade: 7.67
-                </br>
-              </p>
-            </li>
-            <li class="timeline-item">
-              <h4 class="h4 timeline-item-title">NARAYANA JUNIOR COLLEGE</h4>
-              <span><pre><b>Intermediate - MPC   2017 — 2019</b></pre> </span>
-              <p class="timeline-text">          
-                Grade: 9.28
-                </br>
-              </p>
-            </li>
-            <li class="timeline-item">
-              <h4 class="h4 timeline-item-title">SRI KRISHNAVENI E.M HIGH SCHOOL</h4>
-              <span><pre><b>SSC   2018 — 2019</b></pre> </span>
-              <p class="timeline-text">           
-                Grade: 8.7
-                </br>
-              </p>
-            </li>
-          </ol>
- </section>   
+  <header>
+    <h1><i class="fas fa-user-circle"></i> Venkata Surya Settipalli</h1>
+    <p><i class="fas fa-laptop-code"></i> Java Developer | Full-Stack Developer | Tech Enthusiast</p>
+</header>
 
-      <article class="project" data-page="project">
-        <header>
-          <h2 class="h2 article-title">PROJECTS</h2>
-        </header>
-        <section class="project">
-         <ul class="filter-list">
-          </ul>
-          <div class="filter-select-box">
-            <button class="filter-select" data-select>
-              <div class="select-value" data-selecct-value>Select category</div>
-              <div class="select-icon">
-                <ion-icon name="chevron-down"></ion-icon>
-              </div>
-            </button>
-            <ul class="select-list">
-              <li class="select-item">
-                <button data-select-item>All</button>
-              </li>
-              <li class="select-item">
-                <button data-select-item>JAVA</button>
-              </li>
-              <li class="select-item">
-                <button data-select-item>Spring Boot</button>
-              </li>
-              <li class="select-item">
-                <button data-select-item>SQL</button>
-              </li>
-              <li class="select-item">
-                <button data-select-item>Java Full Stack</button>
-              </li>
-            </ul>
-          </div>
-          <ul class="project-list">
-                <li class="project-item  active" data-filter-item data-category="Spring Boot">
-              <a href="https://github.com/Surya200901/SmartGrocery.git">
-                <figure class="project-img">
-                  <div class="project-item-icon-box"> 
-                    <ion-icon name="eye-outline"></ion-icon>
-                  </div>
-                  <img src="https://imgur.com/yfKcbx0.jpg" alt="img" loading="lazy">
-                </figure>
-                <h3 class="project-title"><center>Smart Grocery App</center> </h3>
-              </a>
-            </li> 
-            <li class="project-item  active" data-filter-item data-category="Spring Boot">
-              <a href="https://github.com/Surya200901/ExpenseTracker.git">
-                <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                  </div>
-                  <img src="https://i.imgur.com/Ov7MuoL.png" alt="SQL" loading="lazy">
-                </figure>
-                <h3 class="project-title"><center>Expense Tracker App</center></h3>
-              </a>
-            </li>       
-            <li class="project-item  active" data-filter-item data-category="JAVA">
-              <a href="https://github.com/Surya200901/Panipuri_Paradise_Project.git">
-                <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                  </div>
-                  <img src="https://imgur.com/KGZiv9F" alt="img" loading="lazy">
-                </figure>
-                <h3 class="project-title"><center>Panipuri_Paradise_Project</center> </h3>
-              </a>
-            </li>                         
-          </ul>    
-        </section>
-      </article>
-      <!--
-        - #RESUME
-      -->
-      <article class="certifications" data-page="certifications">
-        <header>
-          <h2 class="h2 article-title">CERTIFICATIONS</h2>
-        </header>
-          <ul class="service-list">
-                 <li class="service-item">
-              <div class="service-icon-box">
-                <h4 class="h4 service-item-title">JAVA Certificate</h4>
-                  <img src="images/nptel.jpg" alt="#" width="250">
-                </div>
-                </li>
-                <li class="service-item">
-             <div class="service-content-box">
-                  <h4 class="h4 service-item-title">MS Office Certificate</h4>
-                  <p class="service-item-text">
-                    <img src="images/microsoft.jpg" alt="#" width="250">
-                  </p>
-                </a>
-                </div>
-            </li>
-              <li class="service-item">
-                <h4 class="h4 service-item-title">Academic Excellence and Library Award</h4>
-                <div class="service-icon-box">
-                  <img src="images/college.jpg" alt="#" width="250">
-                </div>
-          </ul>
-        </section>
-  </article>         
-      <!--
-        - #CONTACT
-      -->
-      <article class="contact" data-page="contact">
-        <header>
-          <h2 class="h2 article-title">Contact</h2>
-        </header>
-        <p>Email: <a href="mailto:settipallisurya1111@gmail.com">settipallisurya1111@gmail.com</a></p>
-        <p>Linkedin: <a href="https://www.linkedin.com/in/surya-settipalli-87b0b4240">Surya Settipalli</a></p>
-      </article>
+    <nav>
+      <span class="hamburger"><i class="fas fa-bars"></i></span>
+      <div class="nav-links">
+          <a href="#about"><i class="fas fa-info-circle"></i> About Me</a>
+          <a href="#projects"><i class="fas fa-project-diagram"></i> Projects</a>
+          <a href="#skills"><i class="fas fa-tools"></i> Skills</a>
+          <a href="#tools"><i class="fas fa-wrench"></i> Tools</a>
+          <a href="#education"><i class="fas fa-graduation-cap"></i> Education</a>
+          <a href="#certificates"><i class="fas fa-certificate"></i> Certificates</a>
+          <a href="#achievements"><i class="fas fa-trophy"></i> Achievements</a>
+          <a href="#hobbies"><i class="fas fa-heart"></i> Hobbies</a>
+          <a href="#contact"><i class="fas fa-envelope"></i> Contact</a>
+      </div>
+    </nav>
+
+    <section id="about" class="about-me">
+      <h2 class="centered-heading">About Me</h2>
+      <img src="images/profile.jpg" alt="Venkata Surya">
+      <p>Hello! I am <b>Venkata Surya Settipalli</b>, a passionate software developer skilled in <b>Java, Spring Boot, MySQL, HTML, CSS, and JavaScript.</b> I enjoy creating real-world solutions and collaborating on exciting projects.</p>
+  </section>
+  
+  <section id="projects" class="projects">
+      <h2 class="centered-heading">My Projects</h2>
+      <div class="card">
+          <img src="images/grocery.png" alt="Smart Grocery App">
+          <h3>Smart Grocery List App</h3>
+          <p>A web app to manage grocery lists, track items, and receive restock reminders.</p>
+          <a href="https://github.com/Surya200901/SmartGrocery.git" target="_blank">View on GitHub</a>
+      </div>
+      <div class="card">
+          <img src="images/expense.jpg" alt="Expense Tracker">
+          <h3>Expense Tracker Dashboard</h3>
+          <p>A dashboard to track income, expenses, and savings, with budget-setting features.</p>
+          <a href="https://github.com/Surya200901/ExpenseTracker.git" target="_blank">View on GitHub</a>
+      </div>
+      <div class="card">
+        <img src="images/panipuri.png" alt="Expense Tracker">
+        <h3>Panipuri Paradise Project (personal small project)</h3>
+        <p>Developed a restaurant service tool allows user to scan and view menu.</p>
+        <a href="https://github.com/Surya200901/Panipuri_Paradise_Project.git" target="_blank">View on GitHub</a>
+      </div>
+  </section>
+  
+  <section id="skills" class="skills">
+      <h2 class="centered-heading">Skills</h2>
+      <div class="card"><h3>Java</h3></div>
+      <div class="card"><h3>JDBC</h3></div>
+      <div class="card"><h3>J2EE</h3></div>
+      <div class="card"><h3>Spring Boot</h3></div>
+      <div class="card"><h3>MySQL</h3></div>
+      <div class="card"><h3>HTML & CSS</h3></div>
+      <div class="card"><h3>JavaScript</h3></div>
+      <div class="card"><h3>GitHub</h3></div>
+      <div class="card"><h3>Jira</h3></div>
+      
+  </section>
+
+  <section id="tools" class="skills">
+    <h2 class="centered-heading">Tools</h2>
+    <div class="card"><h3>Eclipse</h3></div>
+    <div class="card"><h3>Spring STS</h3></div>
+    <div class="card"><h3>Intelij</h3></div>
+    <div class="card"><h3>VS Code</h3></div>
+    <div class="card"><h3>GitHub</h3></div>
+    <div class="card"><h3>Bit bucket</h3></div>
+    
+  </section>
+  
+  <section id="education" class="education-certifications">
+      <h2 class="centered-heading">Education</h2>
+      <div class="card">
+          <h3>K.B.N College, Vijayawada</h3>
+          <span><pre><b>MCA   2022 — 2024</b></pre> </span>
+          <p>Grade: 9.3</p>
+      </div>
+      <div class="card">
+          <h3>Andhra Loyola College, Vijayawada</h3>
+          <span><pre><b>B.Sc (MSCS)   2019 — 2022</b></pre> </span>
+          <p>Grade: 7.62</p>
+      </div>
+      <div class="card">
+        <h3>Narayana Junior College, Vijayawada</h3>
+        <span><pre><b>Intermediate (MPC)   2017 — 2019</b></pre> </span>
+        <p>Grade: 9.28</p>
+      </div>
+  </section>
+
+  <section id="certificates" class="education-certifications">
+    <h2 class="centered-heading">Certificates</h2>
+    <div class="card">
+        <h3>Programming in Java through NPTEL</h3>
+        <img src="images/nptel.jpg" alt="Certificate 1">
     </div>
-  </main>
-  <!--
-    - custom js link
-  -->
-  <script src="./assets/js/script.js"></script>
-  <!--
-    - ionicon link
-  -->
-  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <div class="card">
+        <h3>MS-Office through the Microsoft Digital Skill Program</h3>
+        <img src="images/microsoft.jpg" alt="Certificate 1">
+    </div>
+    <div class="card">
+      <h3>Academic Excellence and Library</h3>
+      <img src="images/college.jpg" alt="Certificate 1">
+    </div>
+  </section>
+  
+  <section id="achievements" class="achievements">
+      <h2 class="centered-heading">Achievements</h2>
+      <div class="card">
+          <p>Certified in "Programming in Java" by NPTEL (85%)</p>
+      </div>
+      <div class="card">
+          <p>Received Academic Excellence and Library Awards</p>
+      </div>
+  </section>
+  
+  <section id="hobbies" class="hobbies">
+      <h2 class="centered-heading">Hobbies & Interests</h2>
+      <div class="card">
+          <h3>Drawing</h3>
+      </div>
+      <div class="card">
+          <h3>Playing - Carroms</h3>
+      </div>
+      <div class="card">
+          <h3>Photography</h3>
+      </div>
+  </section>
+  
+  <section id="contact" class="contact">
+    <h2 class="centered-heading">Contact Me</h2>
+    <p>Email: <a href="mailto:settipallisurya1111@gmail.com">settipallisurya1111@gmail.com</a></p>
+    <p>LinkedIn: <a href="https://www.linkedin.com/in/surya-settipalli-87b0b4240">Surya_Settipalli</a></p>
+    <p>Let's collaborate and build something great together!</p>
+  </section>
+
+    <footer>
+        <p>&copy; 2025 Portfolio | All Rights Reserved</p>
+        <p>Follow me on <a href="https://www.linkedin.com/in/surya-settipalli-87b0b4240">LinkedIn</a></p>
+    </footer>
 </body>
+<script>
+  const hamburger = document.querySelector('.hamburger');
+  const navLinks = document.querySelector('.nav-links');
+
+  hamburger.addEventListener('click', () => {
+      navLinks.classList.toggle('active');
+  });
+</script>
+
 </html>
