@@ -255,48 +255,67 @@
         scroll-behavior: smooth;
     }
 
-     /* Mobile Filter Styling */
-        .mobile-filter {
-            display: none;
-            width: 90%;
-            margin: 15px auto;
-            padding: 12px;
-            font-size: 1em;
-            border: none;
-            border-radius: 10px;
-            background: linear-gradient(135deg, #f0f8ff, #e6e6fa);
-            color: #333;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            text-align: center;
-            appearance: none;
-            -webkit-appearance: none;
-            -moz-appearance: none;
-            cursor: pointer;
-            position: relative;
-            background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 6'%3E%3Cpath fill='%236a5acd' d='M0 0l5 6 5-6z'/%3E%3C/svg%3E");
-            background-repeat: no-repeat;
-            background-position: right 12px center;
-            background-size: 12px;
-            transition: all 0.3s ease;
-        }
+    /* Mobile Filter Styling */
+  .mobile-filter {
+    display: none;
+    width: 90%;
+    margin: 15px auto;
+    padding: 12px;
+    font-size: 1em;
+    border: none;
+    border-radius: 10px;
+    background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+    color: #4a4a4a;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    cursor: pointer;
+    position: relative;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 6'%3E%3Cpath fill='%23333333' d='M0 0l5 6 5-6z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 15px center;
+    background-size: 16px;
+    transition: all 0.3s ease;
+  }
 
-        .mobile-filter:hover {
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
-            transform: translateY(-3px);
-        }
+  .mobile-filter:hover {
+    background: linear-gradient(135deg, #fad0c4, #ff9a9e);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+    transform: translateY(-2px);
+  }
 
-        .mobile-filter:focus {
-            outline: none;
-            box-shadow: 0 0 0 3px rgba(106, 90, 205, 0.4);
-        }
+  .mobile-filter:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(255, 154, 158, 0.5);
+  }
 
-        /* Media Query for Mobile */
-        @media (max-width: 768px) {
-            .mobile-filter {
-            display: block;
-            }
-        }
+  .mobile-filter option {
+    color: #4a4a4a;
+    background: #fff;
+    padding: 10px;
+  }
 
+  /* Fixing Three-Line Dropdown Arrow */
+  .mobile-filter::after {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 50%;
+    right: 15px;
+    transform: translateY(-50%);
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    border-top: 6px solid #333;
+  }
+
+  /* Media Query for Mobile */
+  @media (max-width: 768px) {
+    .mobile-filter {
+      display: block;
+    }
+  }
     </style>
 </head>
 <body>
