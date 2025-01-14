@@ -255,23 +255,69 @@
         scroll-behavior: smooth;
     }
 
-     /* Mobile Filter Styling */
-  .mobile-filter {
-    display: none;
-    width: 90%;
-    margin: 10px auto;
-    padding: 10px;
-    font-size: 1em;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-  }
-
   @media (max-width: 768px) {
     .mobile-filter {
       display: block;
     }
   }
 
+  /* Mobile Filter Styling */
+  .mobile-filter {
+    display: none;
+    width: 90%;
+    margin: 15px auto;
+    padding: 15px;
+    font-size: 1em;
+    border: none;
+    border-radius: 10px;
+    background: linear-gradient(135deg, #f0f8ff, #e6e6fa);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    color: #333;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .mobile-filter:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+  }
+
+  .mobile-filter input,
+  .mobile-filter select {
+    width: 95%;
+    margin: 8px auto;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+    font-size: 0.9em;
+    background-color: #ffffff;
+    outline: none;
+    transition: box-shadow 0.3s ease;
+  }
+
+  .mobile-filter input:focus,
+  .mobile-filter select:focus {
+    box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.2);
+  }
+
+  .mobile-filter button {
+    margin-top: 10px;
+    padding: 10px 20px;
+    font-size: 1em;
+    color: #fff;
+    background: linear-gradient(135deg, #6a5acd, #4169e1);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+    transition: background 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .mobile-filter button:hover {
+    background: linear-gradient(135deg, #4169e1, #6a5acd);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  }
 
     </style>
 </head>
@@ -296,6 +342,7 @@
       </div>
 
       <!-- Mobile Dropdown Filter -->
+      <div class="mobile-filter">
         <select id="mobile-filter" class="mobile-filter">
             <option value="">-- Select Section --</option>
             <option value="#about">About Me</option>
@@ -308,6 +355,8 @@
             <option value="#hobbies">Hobbies</option>
             <option value="#contact">Contact</option>
         </select>
+        <button>Apply Filter</button>
+      </div>
 
     </nav>
 
