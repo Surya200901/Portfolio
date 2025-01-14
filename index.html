@@ -256,23 +256,46 @@
     }
 
      /* Mobile Filter Styling */
-  .mobile-filter {
-    display: none;
-    width: 90%;
-    margin: 10px auto;
-    padding: 10px;
-    font-size: 1em;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-  }
+        .mobile-filter {
+            display: none;
+            width: 90%;
+            margin: 15px auto;
+            padding: 12px;
+            font-size: 1em;
+            border: none;
+            border-radius: 10px;
+            background: linear-gradient(135deg, #f0f8ff, #e6e6fa);
+            color: #333;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            appearance: none;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            cursor: pointer;
+            position: relative;
+            background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 6'%3E%3Cpath fill='%236a5acd' d='M0 0l5 6 5-6z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 12px center;
+            background-size: 12px;
+            transition: all 0.3s ease;
+        }
 
-  @media (max-width: 768px) {
-    .mobile-filter {
-      display: block;
-    }
-  }
+        .mobile-filter:hover {
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+            transform: translateY(-3px);
+        }
 
-  
+        .mobile-filter:focus {
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(106, 90, 205, 0.4);
+        }
+
+        /* Media Query for Mobile */
+        @media (max-width: 768px) {
+            .mobile-filter {
+            display: block;
+            }
+        }
 
     </style>
 </head>
