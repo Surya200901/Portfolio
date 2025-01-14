@@ -255,6 +255,23 @@
         scroll-behavior: smooth;
     }
 
+     /* Mobile Filter Styling */
+  .mobile-filter {
+    display: none;
+    width: 90%;
+    margin: 10px auto;
+    padding: 10px;
+    font-size: 1em;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+
+  @media (max-width: 768px) {
+    .mobile-filter {
+      display: block;
+    }
+  }
+
 
     </style>
 </head>
@@ -277,6 +294,21 @@
           <a href="#hobbies"><i class="fas fa-heart"></i> Hobbies</a>
           <a href="#contact"><i class="fas fa-envelope"></i> Contact</a>
       </div>
+
+      <!-- Mobile Dropdown Filter -->
+        <select id="mobile-filter" class="mobile-filter">
+            <option value="">-- Select Section --</option>
+            <option value="#about">About Me</option>
+            <option value="#projects">Projects</option>
+            <option value="#skills">Skills</option>
+            <option value="#tools">Tools</option>
+            <option value="#education">Education</option>
+            <option value="#certificates">Certificates</option>
+            <option value="#achievements">Achievements</option>
+            <option value="#hobbies">Hobbies</option>
+            <option value="#contact">Contact</option>
+        </select>
+
     </nav>
 
     <section id="about" class="about-me">
@@ -416,13 +448,23 @@
 
 </body>
 <script>
-  const hamburger = document.querySelector('.hamburger');
-  const navLinks = document.querySelector('.nav-links');
-
-  hamburger.addEventListener('click', () => {
+    const hamburger = document.querySelector('.hamburger');
+    const navLinks = document.querySelector('.nav-links');
+    const mobileFilter = document.getElementById('mobile-filter');
+  
+    // Toggle navigation links on hamburger click
+    hamburger.addEventListener('click', () => {
       navLinks.classList.toggle('active');
-      document.body.classList.toggle('no-scroll'); // Prevent scrolling in background
-  });
+      document.body.classList.toggle('no-scroll');
+    });
+  
+    // Navigate to the selected section on mobile filter change
+    mobileFilter.addEventListener('change', (event) => {
+      const sectionId = event.target.value;
+      if (sectionId) {
+        document.querySelector(sectionId).scrollIntoView({ behavior: 'smooth' });
+      }
+    });
 
   const sections = document.querySelectorAll('section');
 
