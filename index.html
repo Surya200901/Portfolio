@@ -317,6 +317,52 @@
       color: #fff;
     }
   }
+
+  .resume-section {
+    text-align: center;
+    margin: 50px 0;
+  }
+  
+  .resume-section h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+  }
+  
+  .download-button {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 1rem;
+    background-color: #007bff;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+  }
+  
+  .download-button:hover {
+    background-color: #0056b3;
+  }
+
+  .hidden {
+    display: none;
+  }
+  
+  #toast-message {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #28a745;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 14px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    transition: opacity 0.3s ease-in-out;
+  }
+  
+  
+  
     </style>
 </head>
 <body>
@@ -329,6 +375,7 @@
       <span class="hamburger"><i class="fas fa-bars"></i></span>
       <div class="nav-links">
           <a href="#about"><i class="fas fa-info-circle"></i> About Me</a>
+          <a href="#resume"><i class="fas fa-download"></i> Resume</a>
           <a href="#projects"><i class="fas fa-project-diagram"></i> Projects</a>
           <a href="#skills"><i class="fas fa-tools"></i> Skills</a>
           <a href="#tools"><i class="fas fa-wrench"></i> Tools</a>
@@ -337,12 +384,15 @@
           <a href="#achievements"><i class="fas fa-trophy"></i> Achievements</a>
           <a href="#hobbies"><i class="fas fa-heart"></i> Hobbies</a>
           <a href="#contact"><i class="fas fa-envelope"></i> Contact</a>
+         
+
       </div>
 
       <!-- Mobile Dropdown Filter -->
         <select id="mobile-filter" class="mobile-filter">
             <option value="">-- Select Section --</option>
             <option value="#about">About Me</option>
+            <option value="#resume">Resume</option>
             <option value="#projects">Projects</option>
             <option value="#skills">Skills</option>
             <option value="#tools">Tools</option>
@@ -359,6 +409,15 @@
       <h2 class="centered-heading">About Me</h2>
       <img src="images/profile.jpg" alt="Venkata Surya">
       <p>Hello! I am <b>Venkata Surya Settipalli</b>, a passionate software developer skilled in <b>Java, Spring Boot, MySQL, HTML, CSS, and JavaScript.</b> I enjoy creating real-world solutions and collaborating on exciting projects.</p>
+  </section>
+
+  <section id="resume" class="resume-section">
+    <h2 class="centered-heading">Resume</h2>
+    <p>Click the button below to download my resume:</p>
+    <a id="resume-download" href="assets/Surya_Settipalli_Resume.pdf" download="Surya_Settipalli_Resume.pdf" class="download-button">
+      <i class="fas fa-download"></i> Download Resume
+    </a>
+    <div id="toast-message" class="hidden">Your resume download is complete!</div>
   </section>
   
   <section id="projects" class="projects">
@@ -405,7 +464,7 @@
     <div class="card"><h3>VS Code</h3></div>
     <div class="card"><h3>GitHub</h3></div>
     <div class="card"><h3>Bit bucket</h3></div>
-    
+    <div class="card"><h3>Postman</h3></div>    
   </section>
   
   <section id="education" class="education-certifications">
@@ -486,10 +545,6 @@
     <p>Let's collaborate and build something great together!</p>
 </section>
 
-<footer>
-    <p>&copy; 2025 Portfolio | All Rights Reserved</p>
-</footer>
-
 </body>
 <script>
     const hamburger = document.querySelector('.hamburger');
@@ -523,6 +578,25 @@
 
     window.addEventListener('scroll', revealSections);
     revealSections(); // Trigger on load
+
+    document.getElementById('resume-download').addEventListener('click', function (e) {
+        e.preventDefault(); // Prevent default link behavior to control the flow
+      
+        // Show the toast message
+        const toast = document.getElementById('toast-message');
+        toast.classList.remove('hidden');
+        
+        // Allow download to proceed after showing the toast
+        setTimeout(() => {
+          window.location.href = e.target.href; // Trigger the download
+          // Hide the toast after 3 seconds
+          setTimeout(() => {
+            toast.classList.add('hidden');
+          }, 3000);
+        }, 500); // Simulate a delay before starting download
+      });
+      
+      
 
 </script>
 
