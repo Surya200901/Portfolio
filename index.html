@@ -98,7 +98,7 @@
             border: 4px solid #3a7bd5;
         }
 
-        .projects, .skills, .certificates, .achievements, .hobbies, .testimonials {
+        .projects, .skills, .certificates, .achievements, .hobbies, .testimonials, .experience {
             display: flex;
             justify-content: center;
             gap: 10px;
@@ -139,7 +139,7 @@
         }
 
         @media (max-width: 768px) {
-            .projects, .skills, .certificates, .achievements, .hobbies, .testimonials {
+            .projects, .skills, .certificates, .achievements, .hobbies, .testimonials, .experience {
                 flex-direction: column;
                 gap: 15px;
             }
@@ -367,14 +367,15 @@
 </head>
 <body>
   <header>
-    <h1><i class="fas fa-user-circle"></i> Venkata Surya Settipalli</h1>
-    <p><i class="fas fa-laptop-code"></i> Java Developer | Full-Stack Developer | Tech Enthusiast</p>
+    <h1><i class="fas fa-user-circle"></i> Surya Settipalli</h1>
+    <p><i class="fas fa-laptop-code"></i> Java Full-Stack Developer | MLOps | S/W Developer @People Tech Group</p>
 </header>
 
     <nav>
       <span class="hamburger"><i class="fas fa-bars"></i></span>
       <div class="nav-links">
           <a href="#about"><i class="fas fa-info-circle"></i> About Me</a>
+          <a href="#experince"><i class="fas fa-briefcase"></i> Experience</a>
           <a href="#resume"><i class="fas fa-download"></i> Resume</a>
           <a href="#projects"><i class="fas fa-project-diagram"></i> Projects</a>
           <a href="#skills"><i class="fas fa-tools"></i> Skills</a>
@@ -392,6 +393,7 @@
         <select id="mobile-filter" class="mobile-filter">
             <option value="">-- Select Section --</option>
             <option value="#about">About Me</option>
+            <option value="#experiencet">Experience</option>
             <option value="#resume">Resume</option>
             <option value="#projects">Projects</option>
             <option value="#skills">Skills</option>
@@ -409,6 +411,14 @@
       <h2 class="centered-heading">About Me</h2>
       <img src="images/profile.jpg" alt="Venkata Surya">
       <p>Hello! I am <b>Venkata Surya Settipalli</b>, a passionate software developer skilled in <b>Java, Spring Boot, MySQL, HTML, CSS, and JavaScript.</b> I enjoy creating real-world solutions and collaborating on exciting projects.</p>
+  </section>
+
+  <section id="experience" class="experience">
+      <h2 class="centered-heading">My Projects</h2>
+      <div class="card">
+          <h3>Software Developer</h3>
+          <p>Trainee Software Developer @People Tech Group.</p>
+      </div>
   </section>
 
   <section id="resume" class="resume-section">
