@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Portfolio of Surya Settipalli, a Java Full-Stack and C++ Software Developer at People Tech Group" />
     <title>Venkata Surya's Portfolio</title>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="icon" type="image/x-icon" href="./assets/favicon.ico" />
     <style>
-        /* Existing styles */
+        /* General Styles */
         body {
             font-family: 'Arial', sans-serif;
             margin: 0;
@@ -14,46 +16,49 @@
             background: linear-gradient(to right, #e3f2fd, #d5c0df);
             color: #333;
             line-height: 1.6;
+            scroll-behavior: smooth;
         }
 
+        body.no-scroll {
+            overflow: hidden;
+        }
+
+        /* Header & Navigation */
         header {
-          background: linear-gradient(to right, #4facfe, #00f2fe);
-          color: white;
-          padding: 20px 0;
-          text-align: center;
-          box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          justify-content: center;
-      }
-      
-      header h1 {
-          margin: 0;
-          font-size: 3em;
-          text-align: center;
-      }
-      
-      header p {
-          font-size: 1.2em;
-          margin-top: 10px;
-          text-align: center;
-      }
+            background: linear-gradient(to right, #4facfe, #00f2fe);
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        header h1 {
+            font-size: 3em;
+            margin: 0;
+        }
+
+        header p {
+            font-size: 1.2em;
+            margin-top: 10px;
+        }
 
         nav {
             background: #333;
-            color: white;
-            text-align: center;
             padding: 10px 0;
             position: sticky;
             top: 0;
             z-index: 1000;
         }
 
+        .nav-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
         nav a {
             color: white;
             text-decoration: none;
-            margin: 0 15px;
             font-size: 1em;
             transition: color 0.3s ease;
         }
@@ -63,46 +68,280 @@
         }
 
         .hamburger {
-          display: none;
-          font-size: 2rem;
-          cursor: pointer;
-        }
-    
-      .nav-links {
-          display: flex;
-          justify-content: center;
-          gap: 20px;
+            display: none;
+            font-size: 2rem;
+            cursor: pointer;
+            color: white;
         }
 
+        /* Section Styling */
         section {
-          text-align: center;
-            padding: 20px 20px;
+            padding: 40px 20px;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
         }
 
-        .section-title {
+        section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .centered-heading {
+            font-size: 2.5em;
+            font-weight: bold;
+            color: #333;
+            margin: 0 auto 30px;
+            text-transform: uppercase;
+            text-align: center;
+            position: relative;
+        }
+
+        .centered-heading::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: #4facfe;
+            margin: 10px auto;
+        }
+
+        /* About Me Section Styling */
+        #about {
+            background: linear-gradient(to right, #e3f2fd, #d5c0df);
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        #about .about-heading {
             font-size: 2.5em;
             color: #333;
-            text-align: center;
             margin-bottom: 20px;
-            text-transform: uppercase;
+            position: relative;
         }
 
-        .about-me {
-            text-align: center;
+        #about .about-heading::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50px;
+            height: 4px;
+            background: #007bff;
         }
 
-        .about-me img {
+        #about .profile-photo {
             width: 150px;
+            height: 150px;
             border-radius: 50%;
+            object-fit: cover;
             margin-bottom: 20px;
-            border: 4px solid #3a7bd5;
+            border: 4px solid #007bff;
+            aspect-ratio: 1/1;
         }
 
-        .projects, .skills, .certificates, .achievements, .hobbies, .testimonials, .experience {
+        #about .about-text {
+            font-size: 1.1em;
+            color: #666;
+            max-width: 600px;
+            margin: 0 auto 30px;
+            line-height: 1.6;
+        }
+
+        .about-cards {
             display: flex;
             justify-content: center;
-            gap: 10px;
+            gap: 20px;
             flex-wrap: wrap;
+            margin-top: 20px;
+        }
+
+        .about-card {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            width: 200px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .about-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .about-card .card-icon {
+            font-size: 2em;
+            color: #007bff;
+            margin-bottom: 10px;
+        }
+
+        .about-card .card-number {
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #007bff;
+            margin-bottom: 10px;
+        }
+
+        .about-card .card-title {
+            font-size: 1.1em;
+            color: #333;
+            margin-bottom: 5px;
+        }
+
+        .about-card .card-subtitle {
+            font-size: 0.9em;
+            color: #666;
+        }
+
+        /* Card and Content Containers */
+        .projects-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            justify-content: center;
+            padding: 20px;
+        }
+        
+        .project-card {
+            background: #ffffff;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            min-height: 400px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .project-card .project-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-bottom: 1px solid #eee;
+            aspect-ratio: 16/9;
+        }
+
+        .project-card .project-content {
+            padding: 25px;
+            min-height: 180px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .project-card h3.project-title {
+            font-size: 1.4em;
+            color: #2c3e50;
+            margin-top: 0;
+            margin-bottom: 10px;
+        }
+
+        .project-card .project-description {
+            color: #555;
+            font-size: 1em;
+            min-height: 50px;
+            flex-grow: 1;
+        }
+
+        .project-card .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 8px;
+            margin: 15px 0;
+        }
+
+        .project-card .tag {
+            background-color: #e6f7ff;
+            color: #007bff;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.8em;
+            font-weight: bold;
+        }
+
+        .project-card .github-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 20px;
+            border-radius: 25px;
+            background-color: #007bff;
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .project-card .github-button:hover {
+            background-color: #0056b3;
+            transform: scale(1.05);
+        }
+        
+        .skills, .tools, .achievements, .hobbies {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            text-align: center;
+        }
+
+        /* Skill Card Specific Styles */
+        .skill-card-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            padding: 20px;
+        }
+
+        .skill-card {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            padding: 20px;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            width: 100%;
+            max-width: 180px;
+            min-height: 150px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+        }
+
+        .skill-card-icon {
+            font-size: 2.5em;
+            color: #4facfe;
+            margin-bottom: 10px;
+        }
+
+        .skill-card-title {
+            font-size: 1.1em;
+            font-weight: bold;
+            color: #333;
+            margin: 0;
+        }
+
+        .skill-card-type {
+            font-size: 0.8em;
+            color: #666;
+            margin-top: 5px;
         }
 
         .card {
@@ -124,23 +363,1052 @@
             border-radius: 10px;
             object-fit: cover;
             margin-bottom: 10px;
+            aspect-ratio: 4/3;
         }
 
-        footer {
-            background: #333;
+        .education-details {
+            font-family: 'Courier New', Courier, monospace;
+            margin: 10px 0;
+            font-size: 1em;
+        }
+
+        /* Experience Section */
+        .experience-card {
+            background-color: #f0f8ff;
+            border-radius: 15px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: left;
+        }
+
+        .experience-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .experience-header .job-info {
+            display: flex;
+            align-items: center;
+        }
+
+        .experience-header .job-info i {
+            background-color: #4facfe;
             color: white;
-            text-align: center;
-            padding: 20px;
+            padding: 12px;
+            border-radius: 10px;
+            margin-right: 15px;
+            font-size: 1.5em;
         }
 
-        footer a {
+        .experience-header .details h3 {
+            font-weight: bold;
+            font-size: 1.8em;
+            margin: 0;
+        }
+
+        .experience-header .date {
+            font-size: 0.9em;
+            color: #555;
+            white-space: nowrap;
+        }
+
+        .experience-card ul {
+            list-style-type: disc;
+            padding-left: 20px;
+            margin: 0;
+        }
+
+        .experience-card li {
+            margin-bottom: 10px;
+            color: #555;
+        }
+
+        .skills-tags {
+            margin-top: 25px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .skill-tag {
+            background-color: #e3f2fd;
+            color: #3a7bd5;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            font-weight: bold;
+            border: 1px solid #4facfe;
+            transition: background-color 0.3s ease;
+        }
+
+        .skill-tag:hover {
+            background-color: #d5c0df;
+        }
+
+        /* Resume Section */
+        .resume-section {
+            text-align: center;
+            margin: 50px 0;
+        }
+        
+        .download-button {
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 1rem;
+            background-color: #007bff;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .download-button:hover {
+            background-color: #0056b3;
+        }
+
+        /* Contact Section */
+        #contact {
+            text-align: center;
+        }
+        #contact p {
+            font-size: 1.1em;
+            margin: 10px 0;
+        }
+
+        #contact p a {
+            color: #007bff;
+            transition: color 0.3s ease;
+        }
+        #contact p a:hover {
+            color: #0056b3;
+        }
+        #contact i {
+            margin-right: 8px;
+        }
+
+        /* Toast Message */
+        #toast-message {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #28a745;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 14px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+            transition: opacity 0.3s ease-in-out;
+            display: none;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        /* Tools & Technologies Section Styles */
+        .tools-tech-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin: 32px auto;
+            max-width: 1200px;
+        }
+
+        .tool-card {
+            background: #fff;
+            border-radius: 16px;
+            box-shadow: 0 2px 12px rgba(70, 155, 255, 0.08);
+            display: flex;
+            align-items: center;
+            padding: 22px 18px;
+            gap: 18px;
+            min-height: 110px;
+            transition: box-shadow 0.3s, transform 0.3s;
+            border: 1px solid #e9f4fc;
+        }
+
+        .tool-card:hover {
+            box-shadow: 0 8px 26px rgba(50, 160, 255, 0.15);
+            transform: translateY(-4px);
+        }
+
+        .tool-icon {
+            width: 48px;
+            height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #d4ecff;
+            border-radius: 12px;
+            font-size: 28px;
+            color: #35a1f5;
+            flex-shrink: 0;
+        }
+
+        .tool-main {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            flex: 1;
+        }
+
+        .tool-title {
+            font-weight: bold;
+            font-size: 1.15em;
+            color: #23395d;
+        }
+
+        .tool-badge {
+            display: inline-block;
+            font-size: 0.88em;
+            background: #e3f2fd;
+            color: #2693fd;
+            border-radius: 7px;
+            padding: 3px 13px;
+            font-weight: 600;
+            margin: 3px 0;
+        }
+
+        .tool-type-ide {
+            background: #e3f2fd;
+            color: #2693fd;
+        }
+
+        .tool-type-editor {
+            background: #e9dafc;
+            color: #a391f8;
+        }
+
+        .tool-type-vcs {
+            background: #d6f8e4;
+            color: #32bb6b;
+        }
+
+        .tool-type-pm {
+            background: #ffe5c4;
+            color: #eeab3b;
+        }
+
+        .tool-type-api {
+            background: #ffe6ee;
+            color: #ec6195;
+        }
+
+        .tool-desc {
+            font-size: 0.95em;
+            color: #535f78;
+        }
+
+        /* Education Section Styles */
+        #education {
+            padding: 60px 0 40px 0;
+        }
+        .centered-heading {
+            text-align: center;
+            font-size: 2.5em;
+            color: #303a52;
+            margin-bottom: 34px;
+            font-weight: bold;
+            letter-spacing: 1px;
+            text-transform: capitalize;
+            position: relative;
+        }
+        .centered-heading::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: #4facfe;
+            margin: 10px auto 0;
+            border-radius: 3px;
+        }
+        /* Card list */
+        .edu-card-list {
+            display: flex;
+            flex-direction: column;
+            gap: 32px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        /* Individual card */
+        .edu-card {
+            display: flex;
+            align-items: flex-start;
+            background: #f3faff;
+            box-shadow: 0 4px 18px rgba(50, 140, 255, 0.08);
+            border-radius: 16px;
+            padding: 30px 32px 26px 18px;
+            gap: 18px;
+            transition: box-shadow 0.2s;
+            border: 1px solid #e3f2fd;
+        }
+        .edu-card:hover {
+            box-shadow: 0 8px 28px rgba(76,175,254,0.16);
+        }
+
+        /* Icon styling */
+        .edu-card-icon {
+            width: 64px;
+            height: 64px;
+            background: #e3f2fd;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 14px;
+            margin-right: 12px;
+        }
+        .edu-card-icon i {
             color: #4facfe;
+            font-size: 2em;
+        }
+
+        .edu-card-content {
+            flex: 1;
+        }
+
+        .edu-card-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 7px;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        .edu-card-title {
+            font-size: 1.18em;
+            font-weight: 600;
+            color: #26323a;
+            letter-spacing: 0.2px;
+        }
+        .edu-card-years {
+            font-size: 1em;
+            color: #5d7191;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+        .edu-card-link {
+            color: #178be0;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1.01em;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .edu-card-link:hover {
+            text-decoration: underline;
+            color: #095b99;
+        }
+        .edu-card-grade {
+            background: #e4f2ff;
+            color: #1976d2;
+            border-radius: 12px;
+            padding: 4px 13px;
+            font-size: 0.98em;
+            font-weight: bold;
+            box-shadow: 0 1px 2px #e3f2fd;
+        }
+        .edu-card-sub {
+            color: #557099;
+            margin-top: 7px;
+            font-size: 1.05em;
+        }
+
+        /* Stat Cards */
+        .stat-cards-container {
+            display: flex;
+            justify-content: center;
+            gap: 32px;
+            margin: 40px 0;
+            flex-wrap: wrap;
+        }
+        .stat-card {
+            background: #fff;
+            border-radius: 16px;
+            box-shadow: 0 4px 16px rgba(76, 175, 254, 0.08);
+            text-align: center;
+            width: 250px;
+            padding: 32px 12px 24px 12px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .stat-card:hover {
+            transform: translateY(-7px);
+            box-shadow: 0 8px 32px rgba(70, 155, 255, 0.13);
+        }
+        .stat-card-icon {
+            font-size: 1.45em;
+            font-weight: 600;
+            background: #4facfe;
+            color: #fff;
+            border-radius: 14px;
+            width: 56px;
+            height: 56px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 18px;
+        }
+        .stat-card-title {
+            font-size: 1.15em;
+            margin-bottom: 7px;
+            color: #26323a;
+            font-weight: 700;
+        }
+        .stat-card-desc {
+            font-size: 1em;
+            color: #7c8ca7;
+        }
+
+        /* Certificates Section Styles */
+        .cert-cards-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 28px;
+            justify-content: center;
+            align-items: stretch;
+            margin-top: 16px;
+        }
+
+        .cert-card {
+            background: #fff;
+            border-radius: 18px;
+            box-shadow: 0 4px 18px rgba(76, 175, 254, 0.12);
+            width: 360px;
+            max-width: 95vw;
+            display: flex;
+            flex-direction: column;
+            align-items: stretch;
+            transition: box-shadow 0.25s, transform 0.25s;
+            border: 1.5px solid #e3f2fd;
+            overflow: hidden;
+        }
+        .cert-card:hover {
+            transform: translateY(-7px) scale(1.01);
+            box-shadow: 0 8px 28px rgba(50, 140, 255, 0.14);
+        }
+
+        /* Certificate image + badge */
+        .cert-card-img-wrap {
+            position: relative;
+            background: #f5faff;
+            min-height: 110px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 22px 16px 12px 16px;
+        }
+        .cert-card-img-wrap img {
+            width: 320px;
+            height: 110px;
+            object-fit: contain;
+            border-radius: 11px;
+            border: 1.5px solid #e3f2fd;
+            box-shadow: 0 2px 8px rgba(76,175,254,0.07);
+            background: #fff;
+            display: block;
+        }
+        .cert-badge {
+            position: absolute;
+            top: 13px;
+            right: 22px;
+            background: #4facfe;
+            color: #fff;
+            font-size: 0.99em;
+            font-weight: bold;
+            border-radius: 1.5em;
+            padding: 5px 17px;
+            box-shadow: 0 2px 7px rgba(76,175,254,0.10);
+        }
+
+        .cert-card-content {
+            padding: 18px 21px 22px 21px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .cert-card-row {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+        .cert-card-icon {
+            width: 36px;
+            height: 36px;
+            background: #e3f2fd;
+            border-radius: 9px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #4facfe;
+            font-size: 1.35em;
+            margin-bottom: 4px;
+        }
+        .cert-card-title {
+            font-weight: 700;
+            color: #25344f;
+            font-size: 1.09em;
+            margin-bottom: 2px;
+        }
+        .cert-card-provider a {
+            color: #4facfe;
+            font-size: 0.97em;
+            font-weight: 600;
             text-decoration: none;
         }
+        .cert-card-provider a:hover {
+            text-decoration: underline;
+        }
+        .cert-card-desc {
+            font-size: 0.99em;
+            color: #5f7290;
+            margin-top: 6px;
+            line-height: 1.55;
+        }
 
-        @media (max-width: 768px) {
-            .projects, .skills, .certificates, .achievements, .hobbies, .testimonials, .experience {
+        .cert-info-highlight {
+            background: #fff;
+            border-radius: 18px;
+            box-shadow: 0 4px 18px rgba(76, 175, 254, 0.09);
+            width: 100%;
+            max-width: 1020px;
+            margin: 0 auto 38px auto;
+            padding: 35px 32px 24px 32px;
+            text-align: center;
+            border: 1.5px solid #eef5fb;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .cert-info-icon {
+            font-size: 2.4em;
+            color: #4facfe;
+            margin-bottom: 10px;
+        }
+        .cert-info-title {
+            font-size: 1.65em;
+            font-weight: bold;
+            margin-bottom: 13px;
+            color: #222c39;
+        }
+        .cert-info-text {
+            font-size: 1.09em;
+            color: #5c6d83;
+            margin-bottom: 28px;
+            max-width: 780px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.5;
+        }
+        .cert-info-stats {
+            display: flex;
+            justify-content: center;
+            gap: 110px;
+            margin-top: 6px;
+            margin-bottom: 7px;
+            width: 100%;
+        }
+        .cert-info-stat-number {
+            font-size: 1.38em;
+            font-weight: bold;
+            color: #349afe;
+            margin-bottom: 6px;
+            display: block;
+        }
+        .cert-info-stat-label {
+            color: #89ade8;
+            font-size: 1em;
+            margin-top: -2px;
+        }
+
+        /* Achievements Section Styles */
+        .achievement-cards-list {
+            display: flex;
+            flex-direction: column;
+            gap: 28px;
+            max-width: 950px;
+            margin: 0 auto 34px auto;
+        }
+        .achievement-card {
+            display: flex;
+            background: #fff;
+            border-radius: 18px;
+            box-shadow: 0 5px 18px rgba(76,175,254,0.11);
+            padding: 32px 34px 22px 28px;
+            align-items: flex-start;
+            border: 1.4px solid #e6f0fa;
+            gap: 22px;
+            transition: box-shadow 0.21s, transform 0.19s;
+        }
+        .achievement-card:hover {
+            box-shadow: 0 9px 34px rgba(70,155,255,0.17);
+            transform: translateY(-7px);
+        }
+        .achievement-card-icon {
+            width: 62px;
+            height: 62px;
+            background: #e7f3fd;
+            border-radius: 19px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.43em;
+            color: #299ef6;
+            flex-shrink: 0;
+            margin-top: 0.5em;
+        }
+        .achievement-icon-star { color: #299ef6; }
+        .achievement-icon-trophy { color: #2b92d2; }
+        .achievement-icon-target { color: #299ef6; }
+
+        .achievement-card-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        .achievement-card-title-row {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 5px;
+        }
+        .achievement-card-title {
+            font-size: 1.20em;
+            font-weight: bold;
+            color: #1a233a;
+        }
+        .achievement-card-badge {
+            background: #d9e9ff;
+            color: #399cfa;
+            font-size: 0.95em;
+            font-weight: 600;
+            border-radius: 10px;
+            padding: 4px 18px;
+            margin-left: 0;
+        }
+        .achievement-card-desc {
+            color: #4570a1;
+            font-size: 1.03em;
+            margin-top: 2px;
+            line-height: 1.56;
+        }
+
+        .achievement-stats-row {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin: 32px auto 34px auto;
+            flex-wrap: wrap;
+        }
+        .achievement-stat-card {
+            background: #fff;
+            border-radius: 16px;
+            box-shadow: 0 3px 10px rgba(60,180,255,0.09);
+            padding: 32px 18px 16px 18px;
+            min-width: 270px;
+            max-width: 340px;
+            flex: 1 1 240px;
+            text-align: center;
+            border: 1.3px solid #e6f0fa;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+        .achievement-stat-icon {
+            font-size: 2.1em;
+            color: #349afe;
+            margin-bottom: 9px;
+        }
+        .achievement-stat-title {
+            font-size: 1.11em;
+            font-weight: 600;
+            color: #233a57;
+            margin-bottom: 3px;
+        }
+        .achievement-stat-number {
+            font-size: 1.39em;
+            color: #299ef6;
+            font-weight: bold;
+            margin-bottom: 1px;
+            margin-top: 4px;
+        }
+        .achievement-stat-label {
+            color: #6aa5de;
+            font-size: 1em;
+            margin-top: 2px;
+        }
+
+        .achievement-philosophy-card {
+            margin: 24px auto 0 auto;
+            background: #fff;
+            border-radius: 18px;
+            box-shadow: 0 5px 18px rgba(76,175,254,0.10);
+            border: 1.4px solid #e6f0fa;
+            padding: 36px 38px 30px 38px;
+            max-width: 930px;
+            text-align: center;
+        }
+        .achievement-philosophy-title {
+            font-size: 1.5em;
+            font-weight: 700;
+            color: #1a233a;
+            margin-bottom: 12px;
+        }
+        .achievement-philosophy-text {
+            font-size: 1.09em;
+            color: #5077a3;
+            line-height: 1.55;
+            max-width: 790px;
+            margin: 0 auto;
+        }
+
+        /* Hobbies Section Styles */
+        .hobby-cards-grid {
+            display: flex;
+            justify-content: center;
+            gap: 34px;
+            margin: 10px auto 34px auto;
+            flex-wrap: wrap;
+            max-width: 1100px;
+        }
+        .hobby-card {
+            background: #fff;
+            border-radius: 18px;
+            box-shadow: 0 4px 16px rgba(76,175,254,0.10);
+            border: 1.2px solid #e7f2fc;
+            padding: 38px 25px 27px 25px;
+            flex: 1 1 295px;
+            max-width: 370px;
+            min-width: 260px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 8px;
+            text-align: center;
+            transition: box-shadow 0.22s, transform 0.22s;
+        }
+        .hobby-card:hover {
+            box-shadow: 0 7px 28px rgba(50,150,250,0.14);
+            transform: translateY(-6px) scale(1.009);
+        }
+        .hobby-card-icon {
+            background: #e1f1fb;
+            color: #44a3f7;
+            border-radius: 16px;
+            width: 64px;
+            height: 64px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.3em;
+            margin-bottom: 15px;
+            margin-top: -16px;
+        }
+        .hobby-card-title {
+            font-size: 1.25em;
+            font-weight: bold;
+            color: #222c39;
+            margin-bottom: 10px;
+        }
+        .hobby-card-desc {
+            color: #5583ad;
+            font-size: 1em;
+            line-height: 1.55;
+            margin-bottom: 12px;
+        }
+        .hobby-card-benefit-title {
+            font-weight: 600;
+            font-size: 1em;
+            margin-bottom: 7px;
+            margin-top: 2px;
+            color: #181f32;
+        }
+        .hobby-card-benefits {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 9px;
+            justify-content: center;
+            margin-top: 2px;
+        }
+        .hobby-card-benefits span {
+            background: #e4f3fb;
+            color: #4ca3de;
+            border-radius: 14px;
+            padding: 5px 14px;
+            font-size: 0.99em;
+            font-weight: 600;
+            margin-bottom: 2px;
+            user-select: none;
+        }
+
+        /* Work-Life Balance Panel */
+        .hobby-balance-card {
+            background: #fff;
+            border-radius: 18px;
+            box-shadow: 0 4px 16px rgba(76,175,254,0.10);
+            border: 1.2px solid #e7f2fc;
+            margin: 35px auto 0 auto;
+            padding: 37px 36px 18px 36px;
+            text-align: center;
+            max-width: 1010px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .hobby-balance-icon {
+            color: #4ac0f7;
+            font-size: 2.6em;
+            margin-bottom: 11px;
+        }
+        .hobby-balance-title {
+            font-size: 1.44em;
+            font-weight: bold;
+            color: #171e3a;
+            margin-bottom: 13px;
+        }
+        .hobby-balance-text {
+            color: #5f7a9d;
+            font-size: 1.09em;
+            max-width: 780px;
+            margin-bottom: 19px;
+            line-height: 1.52;
+        }
+        .hobby-balance-mini-cards {
+            display: flex;
+            justify-content: center;
+            gap: 68px;
+            margin-bottom: 10px;
+            margin-top: 7px;
+            flex-wrap: wrap;
+            width: 100%;
+        }
+        .hobby-mini-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-width: 170px;
+        }
+        .hobby-mini-card-icon {
+            color: #44a3f7;
+            background: #e1f1fb;
+            width: 48px;
+            height: 48px;
+            font-size: 1.65em;
+            border-radius: 13px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 10px;
+        }
+        .hobby-mini-card-title {
+            font-weight: 600;
+            font-size: 1.05em;
+            color: #17254d;
+            margin-bottom: 3px;
+        }
+        .hobby-mini-card-desc {
+            color: #6fa5d2;
+            font-size: 1em;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1020px) {
+            .hobby-cards-grid { gap: 15px; }
+            .hobby-balance-mini-cards { gap: 22px; }
+        }
+        @media (max-width: 700px) {
+            .hobby-balance-card {
+                padding: 18px 7px 10px 7px;
+            }
+            .hobby-cards-grid {
                 flex-direction: column;
+                align-items: center;
+                gap: 12px;
+            }
+            .hobby-card {
+                min-width: 0;
+                max-width: 96vw;
+                padding: 24px 8vw 18px 8vw;
+            }
+            .hobby-balance-mini-cards {
+                flex-direction: column;
+                gap: 7px;
+            }
+            .hobby-mini-card {
+                min-width: 0;
+            }
+        }
+
+        /* Responsive for mobile */
+        @media (max-width: 800px) {
+            .tools-tech-grid {
+                grid-template-columns: 1fr;
+                gap: 16px;
+                padding: 0;
+            }
+            .tool-card {
+                flex-direction: row;
+                min-width: 0;
+                width: 100%;
+                padding: 16px 10px;
+            }
+        }
+
+        /* Responsive Design for Education */
+        @media (max-width: 700px) {
+            .edu-card {
+                flex-direction: column;
+                align-items: stretch;
+                padding: 22px 15px 19px 15px;
+                gap: 12px;
+            }
+            .edu-card-icon {
+                margin-right: 0;
+                margin-bottom: 7px;
+                align-self: flex-start;
+            }
+            .edu-card-row {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 2px;
+                margin-bottom: 5px;
+            }
+        }
+
+        /* Responsive design for Certificates (mobile/tablet) */
+        @media (max-width: 1020px) {
+            .cert-cards-container {
+                flex-direction: column;
+                align-items: center;
+                gap: 22px;
+            }
+            .cert-card {
+                width: 98vw;
+                max-width: 430px;
+            }
+            .cert-card-img-wrap img {
+                width: 85vw;
+                max-width: 320px;
+            }
+        }
+
+        @media (max-width: 920px) {
+            .cert-info-highlight {
+                padding: 27px 10vw 17px 10vw;
+            }
+            .cert-info-stats {
+                gap: 45px;
+            }
+        }
+        @media (max-width: 600px) {
+            .cert-info-highlight {
+                padding: 22px 12px 8px 12px;
+                min-width: 0;
+            }
+            .cert-info-title {
+                font-size: 1.19em;
+            }
+            .cert-info-stats {
+                flex-direction: column;
+                gap: 10px;
+                align-items: center;
+            }
+        }
+
+        /* Responsive design for Achievements */
+        @media (max-width: 1024px) {
+            .achievement-cards-list,
+            .achievement-philosophy-card {
+                padding-left: 4vw;
+                padding-right: 4vw;
+            }
+            .achievement-stats-row {
+                gap: 22px;
+                flex-wrap: wrap;
+            }
+        }
+        @media (max-width: 700px) {
+            .achievement-cards-list { gap: 16px; }
+            .achievement-card {
+                flex-direction: column;
+                padding: 26px 13px 12px 13px;
+                align-items: center;
+                text-align: center;
+                gap: 11px;
+            }
+            .achievement-card-content {
+                align-items: center;
+            }
+            .achievement-card-title-row { flex-direction: column; gap: 7px; }
+            .achievement-stats-row { flex-direction: column; align-items: center; gap: 10px; }
+            .achievement-philosophy-card {
+                padding: 22px 10px 18px 10px;
+            }
+        }
+
+        /* Media Queries for Responsive Design */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2.5em;
+            }
+
+            .centered-heading {
+                font-size: 2em;
+            }
+
+            nav a {
+                font-size: 0.9em;
+            }
+
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                background: #333;
+                position: absolute;
+                top: 50px;
+                left: 0;
+                right: 0;
+                padding: 10px 0;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .hamburger {
+                display: block;
+                position: absolute;
+                right: 20px;
+                top: 15px;
+            }
+    
+            .projects-container {
+                grid-template-columns: 1fr;
+            }
+
+            .skill-card-container, .tools {
+                flex-direction: column;
+                align-items: center;
+                gap: 15px;
+            }
+
+            .projects, .skills, .tools, .achievements, .hobbies {
+                flex-direction: column;
+                align-items: center;
                 gap: 15px;
             }
 
@@ -148,473 +1416,699 @@
                 width: 90%;
             }
 
-            .section-title {
-                font-size: 2em;
+            .experience-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 15px;
+            }
+
+            .about-cards {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .about-card {
+                width: 80%;
                 margin-bottom: 15px;
             }
         }
-
-        .education-certifications {
-          display: flex;
-          justify-content: center; /* Align items in the center horizontally */
-          gap: 20px; /* Add space between cards */
-          flex-wrap: wrap; /* Allow wrapping on smaller screens */
-      }
-      
-      /* Centered Heading Style */
-      /* Ensure proper centering of headings */
-      .centered-heading {
-        font-size: 2.5em;
-        font-weight: bold;
-        color: #333;
-        margin: 0 auto; /* Center horizontally */
-        margin-bottom: 30px;
-        text-transform: uppercase;
-        text-align: center; /* Center text */
-        position: relative;
-        width: 100%; /* Ensure it takes up full width for alignment */
-      }
-
-      .centered-heading::after {
-        content: '';
-        display: block;
-        width: 80px;
-        height: 4px;
-        background: #4facfe;
-        margin: 10px auto; /* Center the underline */
-      }
-
-      /* Animations */
-      @keyframes fadeIn {
-        from {
-            opacity: 0;
-        }
-        to {
-            opacity: 1;
-        }
-      }
-
-      @keyframes slideInFromBottom {
-        from {
-            transform: translateY(20px);
-            opacity: 0;
-        }
-        to {
-            transform: translateY(0);
-            opacity: 1;
-        }
-      }
-
-      /* Responsive styling */
-      @media (max-width: 768px) {
-        header h1 {
-            font-size: 2.5em;
-        }
-
-        nav a {
-            font-size: 0.9em;
-        }
-
-        .card {
-            width: 90%;
-        }
-
-        .centered-heading {
-            font-size: 2.5em;
-        }
-      }
-
-      /* Mobile Navigation */
-  @media (max-width: 768px) {
-    .nav-links {
-        display: none;
-        flex-direction: column;
-        background: #333;
-        position: absolute;
-        top: 60px;
-        left: 0;
-        right: 0;
-        text-align: center;
-        padding: 10px 0;
-    }
-
-    .nav-links.active {
-        display: flex;
-    }
-
-    .hamburger {
-        display: block;
-        position: absolute;
-        right: 20px;
-        top: 10px;
-        color: white;
-    }
-    
-  }
-    html {
-        scroll-behavior: smooth;
-    }
-
-    /* Mobile Filter Styling */
-  .mobile-filter {
-    display: none;
-    width: 90%;
-    margin: 15px auto;
-    padding: 12px;
-    font-size: 1em;
-    border: none;
-    border-radius: 10px;
-    background: linear-gradient(135deg, #ff9a9e, #fad0c4);
-    color: #b1a9c6;
-    box-shadow: 0 4px 8px rgba(229, 211, 14, 0.3);
-    text-align: center;
-    appearance: none;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    cursor: pointer;
-    position: relative;
-    background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 6'%3E%3Cpath fill='%23333333' d='M0 0l5 6 5-6z'/%3E%3C/svg%3E");
-    background-repeat: no-repeat;
-    background-position: right 15px center;
-    background-size: 16px;
-    transition: all 0.3s ease;
-  }
-
-  .mobile-filter:hover {
-    background: linear-gradient(135deg, #fad0c4, #ff9a9e);
-    box-shadow: 0 6px 12px rgba(220, 47, 17, 0.4);
-    transform: translateY(-2px);
-  }
-
-  .mobile-filter:focus {
-    outline: none;
-    box-shadow: 0 0 0 3px rgba(255, 154, 158, 0.5);
-  }
-
-  .mobile-filter option {
-    color: #d41919;
-    background: #fff;
-    padding: 10px;
-  }
-
-  /* Fixing Three-Line Dropdown Arrow */
-  .mobile-filter::after {
-    content: '';
-    display: block;
-    position: absolute;
-    top: 50%;
-    right: 15px;
-    transform: translateY(-50%);
-    border-left: 6px solid transparent;
-    border-right: 6px solid transparent;
-    border-top: 6px solid #d22c13;
-  }
-
-  /* Media Query for Mobile */
-  @media (max-width: 768px) {
-    .mobile-filter {
-      display: block;
-      color: #fff;
-    }
-  }
-
-  .resume-section {
-    text-align: center;
-    margin: 50px 0;
-  }
-  
-  .resume-section h2 {
-    font-size: 2rem;
-    margin-bottom: 20px;
-  }
-  
-  .download-button {
-    display: inline-block;
-    padding: 10px 20px;
-    font-size: 1rem;
-    background-color: #007bff;
-    color: #fff;
-    text-decoration: none;
-    border-radius: 5px;
-    transition: background-color 0.3s;
-  }
-  
-  .download-button:hover {
-    background-color: #0056b3;
-  }
-
-  .hidden {
-    display: none;
-  }
-  
-  #toast-message {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    background-color: #28a745;
-    color: white;
-    padding: 10px 20px;
-    border-radius: 5px;
-    font-size: 14px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-    z-index: 1000;
-    transition: opacity 0.3s ease-in-out;
-  }
-  
-  
-  
     </style>
 </head>
 <body>
-  <header>
-    <h1><i class="fas fa-user-circle"></i> Surya Settipalli</h1>
-    <p><i class="fas fa-laptop-code"></i> Java Full-Stack | C++ | S/W Developer @People Tech Group</p>
-</header>
+    <header>
+        <h1><i class="fas fa-user-circle" aria-hidden="true" aria-label="User icon"></i> Surya Settipalli</h1>
+        <p><i class="fas fa-laptop-code" aria-hidden="true" aria-label="Laptop code icon"></i> Java Full-Stack | C++ | Software Developer @People Tech Group</p>
+    </header>
 
     <nav>
-      <span class="hamburger"><i class="fas fa-bars"></i></span>
-      <div class="nav-links">
-          <a href="#about"><i class="fas fa-info-circle"></i> About Me</a>
-          <a href="#experience"><i class="fas fa-briefcase"></i> Experience</a>
-          <a href="#resume"><i class="fas fa-download"></i> Resume</a>
-          <a href="#projects"><i class="fas fa-project-diagram"></i> Projects</a>
-          <a href="#skills"><i class="fas fa-tools"></i> Skills</a>
-          <a href="#tools"><i class="fas fa-wrench"></i> Tools</a>
-          <a href="#education"><i class="fas fa-graduation-cap"></i> Education</a>
-          <a href="#certificates"><i class="fas fa-certificate"></i> Certificates</a>
-          <a href="#achievements"><i class="fas fa-trophy"></i> Achievements</a>
-          <a href="#hobbies"><i class="fas fa-heart"></i> Hobbies</a>
-          <a href="#contact"><i class="fas fa-envelope"></i> Contact</a>
-         
-
-      </div>
-
-      <!-- Mobile Dropdown Filter -->
-        <select id="mobile-filter" class="mobile-filter">
-            <option value="">-- Select Section --</option>
-            <option value="#about">About Me</option>
-            <option value="#experience">Experience</option>
-            <option value="#resume">Resume</option>
-            <option value="#projects">Projects</option>
-            <option value="#skills">Skills</option>
-            <option value="#tools">Tools</option>
-            <option value="#education">Education</option>
-            <option value="#certificates">Certificates</option>
-            <option value="#achievements">Achievements</option>
-            <option value="#hobbies">Hobbies</option>
-            <option value="#contact">Contact</option>
-        </select>
-
+        <button class="hamburger" aria-label="Toggle navigation menu"><i class="fas fa-bars"></i></button>
+        <div class="nav-links">
+            <a href="#about"><i class="fas fa-info-circle" aria-hidden="true" aria-label="About me icon"></i> About Me</a>
+            <a href="#experience"><i class="fas fa-briefcase" aria-hidden="true" aria-label="Experience icon"></i> Experience</a>
+            <a href="#resume"><i class="fas fa-download" aria-hidden="true" aria-label="Resume icon"></i> Resume</a>
+            <a href="#projects"><i class="fas fa-project-diagram" aria-hidden="true" aria-label="Projects icon"></i> Projects</a>
+            <a href="#skills"><i class="fas fa-tools" aria-hidden="true" aria-label="Skills icon"></i> Skills</a>
+            <a href="#tools"><i class="fas fa-wrench" aria-hidden="true" aria-label="Tools icon"></i> Tools</a>
+            <a href="#education"><i class="fas fa-graduation-cap" aria-hidden="true" aria-label="Education icon"></i> Education</a>
+            <a href="#certificates"><i class="fas fa-certificate" aria-hidden="true" aria-label="Certificates icon"></i> Certificates</a>
+            <a href="#achievements"><i class="fas fa-trophy" aria-hidden="true" aria-label="Achievements icon"></i> Achievements</a>
+            <a href="#hobbies"><i class="fas fa-heart" aria-hidden="true" aria-label="Hobbies icon"></i> Hobbies</a>
+            <a href="#contact"><i class="fas fa-envelope" aria-hidden="true" aria-label="Contact icon"></i> Contact</a>
+        </div>
     </nav>
 
-    <section id="about" class="about-me">
-      <h2 class="centered-heading">About Me</h2>
-      <img src="images/profile.jpg" alt="Venkata Surya">
-      <p>Hello! I am <b> Surya Settipalli</b>, C++ software developer and skilled in <b>Java, Spring Boot, MySQL, HTML, CSS, and JavaScript.</b> I enjoy creating real-world solutions and collaborating on exciting projects.</p>
-  </section>
+    <section id="about">
+        <h2 class="about-heading">About Me</h2>
+        <img src="./assets/images/profile.jpg" alt="Portrait of Surya Settipalli" class="profile-photo" loading="lazy" />
+        <p class="about-text">
+            Hello! I am Surya Settipalli, a passionate C++ software developer skilled in Java, Spring Boot, MySQL, HTML, CSS, and JavaScript. I enjoy creating real-world solutions and
+            collaborating on exciting projects. With a strong foundation in both frontend and backend technologies, I strive to build efficient, scalable, and user-friendly applications that
+            make a meaningful impact.
+        </p>
+        <div class="about-cards">
+            <div class="about-card">
+                <div class="card-icon"><i class="fas fa-clock"></i></div>
+                <div class="card-number">3+</div>
+                <div class="card-title">Years Experience</div>
+                <div class="card-subtitle">Software Development</div>
+            </div>
+            <div class="about-card">
+                <div class="card-icon"><i class="fas fa-code"></i></div>
+                <div class="card-number">10+</div>
+                <div class="card-title">Technologies</div>
+                <div class="card-subtitle">Programming Languages & Tools</div>
+            </div>
+            <div class="about-card">
+                <div class="card-icon"><i class="fas fa-project-diagram"></i></div>
+                <div class="card-number">4+</div>
+                <div class="card-title">Projects</div>
+                <div class="card-subtitle">Completed Applications</div>
+            </div>
+        </div>
+    </section>
 
-  <section id="experience" class="experience">
-      <h2 class="centered-heading">Experience</h2>
-      <div class="card">
-          <h3>Software Developer</h3>
-          <p>Software Developer @People Tech Group.</p>
-      </div>
-  </section>
+    <section id="experience">
+        <h2 class="centered-heading">Experience</h2>
+        <div class="experience-card">
+            <div class="experience-header">
+                <div class="job-info">
+                    <i class="fas fa-suitcase" aria-hidden="true" aria-label="Job icon"></i>
+                    <div class="details">
+                        <h3>Software Developer</h3>
+                        <p>People Tech Group</p>
+                    </div>
+                </div>
+                <div class="date">March 2024 - Present</div>
+            </div>
+            <ul>
+                <li>
+                    Contributed to the development of the Instrument Panel Cluster (IPC) in infotainment systems for automotive applications, primarily for General Motors
+                </li>
+                <li>Designed and built responsive user interfaces using XML tailored for embedded automotive environments</li>
+                <li>Implemented backend logic in C++ to manage core system functionalities and ensure smooth communication between UI components and system modules</li>
+                <li>Collaborated with cross-functional teams to develop and test real-time features, following automotive industry standards</li>
+                <li>Gained hands-on experience with C++ in a production-level automotive software development lifecycle</li>
+            </ul>
+            <div class="skills-tags">
+                <span class="skill-tag">C++</span>
+                <span class="skill-tag">XML</span>
+                <span class="skill-tag">Automotive Systems</span>
+                <span class="skill-tag">Real-time Development</span>
+                <span class="skill-tag">IPC</span>
+                <span class="skill-tag">Infotainment</span>
+            </div>
+        </div>
+    </section>
 
-<!--   <section id="resume" class="resume-section">
-    <h2 class="centered-heading">Resume</h2>
-    <p>Click the button below to download my resume:</p>
-    <a id="resume-download" href="assets/Surya_Settipalli_Resume.pdf" download="Surya_Settipalli_Resume.pdf" class="download-button">
-      <i class="fas fa-download"></i> Download Resume
-    </a>
-    <div id="toast-message" class="hidden">Your resume download is complete!</div>
-  </section> -->
-  
-  <section id="projects" class="projects">
-      <h2 class="centered-heading">My Projects</h2>
-      <div class="card">
-          <img src="images/grocery.png" alt="Smart Grocery App">
-          <h3>Smart Grocery List App</h3>
-          <p>A web app to manage grocery lists, track items, and receive restock reminders.</p>
-          <a href="https://github.com/Surya200901/SmartGrocery.git" target="_blank">View on GitHub</a>
-      </div>
-      <div class="card">
-          <img src="images/expense.png" alt="Expense Tracker">
-          <h3>Expense Tracker Dashboard</h3>
-          <p>A dashboard to track income, expenses, and savings, with budget-setting features.</p>
-          <a href="https://github.com/Surya200901/ExpenseTracker.git" target="_blank">View on GitHub</a>
-      </div>
-      <div class="card">
-        <img src="images/panipuri.png" alt="Expense Tracker">
-        <h3>Panipuri Paradise Project (personal small project)</h3>
-        <p>Developed a restaurant service tool allows user to scan and view menu.</p>
-        <a href="https://github.com/Surya200901/Panipuri_Paradise_Project.git" target="_blank">View on GitHub</a>
-      </div>
-      <div class="card">
-        <img src="images/TaskManagement.jpg" alt="Track Management">
-        <h3>Task Management System</h3>
-        <p>A web-based application to create, organize, prioritize, and track tasks efficiently. 🚀</p>
-        <a href="https://github.com/Surya200901/TaskManagement.git" target="_blank">View on GitHub</a>
-      </div>
-  </section>
-  
-  <section id="skills" class="skills">
-      <h2 class="centered-heading">Skills</h2>
-      <div class="card"><h3>Java</h3></div>
-      <div class="card"><h3>JDBC</h3></div>
-      <div class="card"><h3>J2EE</h3></div>
-      <div class="card"><h3>Spring Boot</h3></div>
-      <div class="card"><h3>C++</h3></div>
-      <div class="card"><h3>MySQL</h3></div>
-      <div class="card"><h3>HTML & CSS</h3></div>
-      <div class="card"><h3>JavaScript</h3></div>
-      <div class="card"><h3>GitHub</h3></div>
-      <div class="card"><h3>Jira</h3></div>
-      
-  </section>
-
-  <section id="tools" class="skills">
-    <h2 class="centered-heading">Tools</h2>
-    <div class="card"><h3>Eclipse</h3></div>
-    <div class="card"><h3>Spring STS</h3></div>
-    <div class="card"><h3>Intelij</h3></div>
-    <div class="card"><h3>VS Code</h3></div>
-    <div class="card"><h3>GitHub</h3></div>
-    <div class="card"><h3>Jira</h3></div>
-    <div class="card"><h3>Postman</h3></div>    
-  </section>
-  
-  <section id="education" class="education-certifications">
-      <h2 class="centered-heading">Education</h2>
-      <div class="card">
-          <h3>K.B.N College, Vijayawada</h3>
-          <span><pre><b>MCA   2022 — 2024</b></pre> </span>
-          <p>Grade: 9.08</p>
-      </div>
-      <div class="card">
-          <h3>Andhra Loyola College, Vijayawada</h3>
-          <span><pre><b>B.Sc (MSCS)   2019 — 2022</b></pre> </span>
-          <p>Grade: 7.62</p>
-      </div>
-      <div class="card">
-        <h3>Narayana Junior College, Vijayawada</h3>
-        <span><pre><b>Intermediate (MPC)   2017 — 2019</b></pre> </span>
-        <p>Grade: 9.28</p>
-      </div>
-  </section>
-
-  <section id="certificates" class="education-certifications">
-    <h2 class="centered-heading">Certificates</h2>
-    <div class="card">
-        <h3>Programming in Java through NPTEL</h3>
-        <img src="images/nptel.jpg" alt="Certificate 1">
-    </div>
-    <div class="card">
-        <h3>MS-Office through the Microsoft Digital Skill Program</h3>
-        <img src="images/microsoft.jpg" alt="Certificate 1">
-    </div>
-    <div class="card">
-      <h3>Academic Excellence and Library</h3>
-      <img src="images/college.jpg" alt="Certificate 1">
-    </div>
-  </section>
-  
-  <section id="achievements" class="achievements">
-      <h2 class="centered-heading">Achievements</h2>
-      <div class="card">
-          <p>Certified in "Programming in Java" by NPTEL (85%)</p>
-      </div>
-      <div class="card">
-          <p>Received Academic Excellence and Library Awards</p>
-      </div>
-  </section>
-  
-  <section id="hobbies" class="hobbies">
-      <h2 class="centered-heading">Hobbies & Interests</h2>
-      <div class="card">
-          <h3>Drawing</h3>
-      </div>
-      <div class="card">
-          <h3>Playing - Carroms</h3>
-      </div>
-      <div class="card">
-          <h3>Photography</h3>
-      </div>
-  </section>
-  
-  <section id="contact" class="contact">
-    <h2 class="centered-heading">Contact Me</h2>
-    <p>
-        <a href="mailto:surya.settipalli@rampgroup.com" style="text-decoration: none; color: inherit;">
-            <i class="fas fa-envelope"></i> settipallisurya1111@gmail.com
+    <section id="resume" class="resume-section">
+        <h2 class="centered-heading">My Resume</h2>
+        <p>You can download my resume to learn more about my qualifications and experience.</p>
+        <a href="./assets/Surya_Settipalli_Resume.pdf" id="resume-download" class="download-button" download aria-label="Download Surya's resume">
+            <i class="fas fa-download" aria-hidden="true" aria-label="Download icon"></i> Download Resume
         </a>
-    </p>
-    <p>
-        <a href="https://www.linkedin.com/in/surya-settipalli-87b0b4240" target="_blank" style="text-decoration: none; color: inherit;">
-            <i class="fab fa-linkedin"></i> Surya_Settipalli
-        </a>
-    </p>
-    <p>
-        <a href="https://github.com/Surya200901" target="_blank" style="text-decoration: none; color: inherit;">
-            <i class="fab fa-github"></i> Surya200901
-        </a>
-    </p>
-    <p>Let's collaborate and build something great together!</p>
+    </section>
+
+    <section id="projects">
+        <h2 class="centered-heading">My Projects</h2>
+        <div class="projects-container">
+            <div class="project-card">
+                <img src="./assets/images/grocery.png" alt="Smart Grocery List App interface" class="project-image" loading="lazy" />
+                <div class="project-content">
+                    <h3 class="project-title">Smart Grocery List App</h3>
+                    <p class="project-description">
+                        A comprehensive web application to manage grocery lists, track items, and receive intelligent restock reminders with user-friendly interface.
+                    </p>
+                    <div class="project-tags">
+                        <span class="tag">JavaScript</span>
+                        <span class="tag">HTML</span>
+                        <span class="tag">CSS</span>
+                        <span class="tag">Local Storage</span>
+                    </div>
+                    <a href="https://github.com/Surya200901/SmartGrocery.git" class="github-button" target="_blank" rel="noopener noreferrer" aria-label="View Smart Grocery List App on GitHub">
+                        <i class="fab fa-github"></i> View on GitHub
+                    </a>
+                </div>
+            </div>
+            <div class="project-card">
+                <img src="./assets/images/expense.png" alt="Expense Tracker Dashboard interface" class="project-image" loading="lazy" />
+                <div class="project-content">
+                    <h3 class="project-title">Expense Tracker Dashboard</h3>
+                    <p class="project-description">
+                        A sophisticated dashboard to track income, expenses, and savings with advanced budget-setting features and financial analytics.
+                    </p>
+                    <div class="project-tags">
+                        <span class="tag">React</span>
+                        <span class="tag">JavaScript</span>
+                        <span class="tag">Chart.js</span>
+                        <span class="tag">CSS</span>
+                    </div>
+                    <a href="https://github.com/Surya200901/ExpenseTracker.git" class="github-button" target="_blank" rel="noopener noreferrer" aria-label="View Expense Tracker Dashboard on GitHub">
+                        <i class="fab fa-github"></i> View on GitHub
+                    </a>
+                </div>
+            </div>
+            <div class="project-card">
+                <img src="./assets/images/panipuri.png" alt="Panipuri Paradise Project interface" class="project-image" loading="lazy" />
+                <div class="project-content">
+                    <h3 class="project-title">Panipuri Paradise Project</h3>
+                    <p class="project-description">Developed a restaurant service tool that allows users to scan and view menus.</p>
+                    <div class="project-tags">
+                        <span class="tag">React</span>
+                        <span class="tag">JavaScript</span>
+                        <span class="tag">Chart.js</span>
+                        <span class="tag">CSS</span>
+                    </div>
+                    <a href="https://github.com/Surya200901/Panipuri_Paradise_Project.git" class="github-button" target="_blank" rel="noopener noreferrer" aria-label="View Panipuri Paradise Project on GitHub">
+                        <i class="fab fa-github"></i> View on GitHub
+                    </a>
+                </div>
+            </div>
+            <div class="project-card">
+                <img src="./assets/images/TaskManagement.jpg" alt="Task Management System interface" class="project-image" loading="lazy" />
+                <div class="project-content">
+                    <h3 class="project-title">Task Management System</h3>
+                    <p class="project-description">
+                        A web-based application to create, organize, prioritize, and track tasks efficiently.
+                    </p>
+                    <div class="project-tags">
+                        <span class="tag">React</span>
+                        <span class="tag">JavaScript</span>
+                        <span class="tag">Chart.js</span>
+                        <span class="tag">CSS</span>
+                    </div>
+                    <a href="https://github.com/Surya200901/TaskManagement.git" class="github-button" target="_blank" rel="noopener noreferrer" aria-label="View Task Management System on GitHub">
+                        <i class="fab fa-github"></i> View on GitHub
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills">
+        <h2 class="centered-heading">Skills</h2>
+        <div class="skill-card-container">
+            <div class="skill-card">
+                <i class="fas fa-code skill-card-icon"></i>
+                <h3 class="skill-card-title">Java</h3>
+                <p class="skill-card-type">Programming</p>
+            </div>
+            <div class="skill-card">
+                <i class="fas fa-database skill-card-icon"></i>
+                <h3 class="skill-card-title">JDBC</h3>
+                <p class="skill-card-type">Database</p>
+            </div>
+            <div class="skill-card">
+                <i class="fas fa-server skill-card-icon"></i>
+                <h3 class="skill-card-title">J2EE</h3>
+                <p class="skill-card-type">Framework</p>
+            </div>
+            <div class="skill-card">
+                <i class="fas fa-leaf skill-card-icon"></i>
+                <h3 class="skill-card-title">Spring Boot</h3>
+                <p class="skill-card-type">Framework</p>
+            </div>
+            <div class="skill-card">
+                <i class="fas fa-c skill-card-icon"></i>
+                <h3 class="skill-card-title">C++</h3>
+                <p class="skill-card-type">Programming</p>
+            </div>
+            <div class="skill-card">
+                <i class="fas fa-database skill-card-icon"></i>
+                <h3 class="skill-card-title">MySQL</h3>
+                <p class="skill-card-type">Database</p>
+            </div>
+            <div class="skill-card">
+                <i class="fas fa-globe skill-card-icon"></i>
+                <h3 class="skill-card-title">HTML & CSS</h3>
+                <p class="skill-card-type">Frontend</p>
+            </div>
+            <div class="skill-card">
+                <i class="fab fa-js skill-card-icon"></i>
+                <h3 class="skill-card-title">JavaScript</h3>
+                <p class="skill-card-type">Programming</p>
+            </div>
+            <div class="skill-card">
+                <i class="fab fa-github skill-card-icon"></i>
+                <h3 class="skill-card-title">GitHub</h3>
+                <p class="skill-card-type">Tools</p>
+            </div>
+            <div class="skill-card">
+                <i class="fab fa-jira skill-card-icon"></i>
+                <h3 class="skill-card-title">Jira</h3>
+                <p class="skill-card-type">Tools</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="tools">
+        <h2 class="centered-heading">Tools & Technologies</h2>
+        <div class="tools-tech-grid">
+            <div class="tool-card">
+                <div class="tool-icon"><i class="fas fa-wrench"></i></div>
+                <div class="tool-main">
+                    <div class="tool-title">Eclipse</div>
+                    <div class="tool-badge tool-type-ide">IDE</div>
+                    <div class="tool-desc">Java Development Environment</div>
+                </div>
+            </div>
+            <div class="tool-card">
+                <div class="tool-icon"><i class="fas fa-wrench"></i></div>
+                <div class="tool-main">
+                    <div class="tool-title">Spring STS</div>
+                    <div class="tool-badge tool-type-ide">IDE</div>
+                    <div class="tool-desc">Spring Framework Development</div>
+                </div>
+            </div>
+            <div class="tool-card">
+                <div class="tool-icon"><i class="fas fa-wrench"></i></div>
+                <div class="tool-main">
+                    <div class="tool-title">IntelliJ IDEA</div>
+                    <div class="tool-badge tool-type-ide">IDE</div>
+                    <div class="tool-desc">Advanced Java IDE</div>
+                </div>
+            </div>
+            <div class="tool-card">
+                <div class="tool-icon"><i class="fas fa-file-alt"></i></div>
+                <div class="tool-main">
+                    <div class="tool-title">VS Code</div>
+                    <div class="tool-badge tool-type-editor">Editor</div>
+                    <div class="tool-desc">Lightweight Code Editor</div>
+                </div>
+            </div>
+            <div class="tool-card">
+                <div class="tool-icon"><i class="fab fa-github"></i></div>
+                <div class="tool-main">
+                    <div class="tool-title">GitHub</div>
+                    <div class="tool-badge tool-type-vcs">Version Control</div>
+                    <div class="tool-desc">Source Code Management</div>
+                </div>
+            </div>
+            <div class="tool-card">
+                <div class="tool-icon"><i class="fas fa-clipboard-list"></i></div>
+                <div class="tool-main">
+                    <div class="tool-title">Jira</div>
+                    <div class="tool-badge tool-type-pm">Project Management</div>
+                    <div class="tool-desc">Issue Tracking & Agile</div>
+                </div>
+            </div>
+            <div class="tool-card">
+                <div class="tool-icon"><i class="fas fa-vial"></i></div>
+                <div class="tool-main">
+                    <div class="tool-title">Postman</div>
+                    <div class="tool-badge tool-type-api">API Testing</div>
+                    <div class="tool-desc">API Development & Testing</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="education">
+        <h2 class="centered-heading">Education</h2>
+        <div class="stat-cards-container">
+            <div class="stat-card">
+                <div class="stat-card-icon stat-mca">MCA</div>
+                <div class="stat-card-title">Master's Degree</div>
+                <div class="stat-card-desc">Computer Applications</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-card-icon stat-cgpa">8.6</div>
+                <div class="stat-card-title">Average CGPA</div>
+                <div class="stat-card-desc">Academic Excellence</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-card-icon stat-years">7</div>
+                <div class="stat-card-title">Years</div>
+                <div class="stat-card-desc">Academic Journey</div>
+            </div>
+        </div>
+        <div class="edu-card-list">
+            <!-- MCA Card -->
+            <div class="edu-card">
+                <div class="edu-card-icon">
+                    <i class="fas fa-graduation-cap"></i>
+                </div>
+                <div class="edu-card-content">
+                    <div class="edu-card-row">
+                        <span class="edu-card-title">Master of Computer Applications (MCA)</span>
+                        <span class="edu-card-years"><i class="fa-regular fa-calendar"></i> 2022 — 2024</span>
+                    </div>
+                    <div class="edu-card-row">
+                        <a href="https://www.kbncollege.ac.in/" target="_blank" class="edu-card-link">
+                            <i class="fa-solid fa-location-dot"></i> K.B.N College, Vijayawada
+                        </a>
+                        <span class="edu-card-grade">Grade: 9.08 CGPA</span>
+                    </div>
+                    <div class="edu-card-sub">Advanced studies in computer applications with focus on software development, algorithms, and system design.</div>
+                </div>
+            </div>
+            <!-- BSc Card -->
+            <div class="edu-card">
+                <div class="edu-card-icon">
+                    <i class="fas fa-graduation-cap"></i>
+                </div>
+                <div class="edu-card-content">
+                    <div class="edu-card-row">
+                        <span class="edu-card-title">B.Sc (Mathematics, Statistics, Computer Science)</span>
+                        <span class="edu-card-years"><i class="fa-regular fa-calendar"></i> 2019 — 2022</span>
+                    </div>
+                    <div class="edu-card-row">
+                        <a href="https://www.andhraloyolacollege.ac.in/" target="_blank" class="edu-card-link">
+                            <i class="fa-solid fa-location-dot"></i> Andhra Loyola College, Vijayawada
+                        </a>
+                        <span class="edu-card-grade">Grade: 7.62 CGPA</span>
+                    </div>
+                    <div class="edu-card-sub">Comprehensive foundation in mathematical concepts, statistical analysis, and computer science fundamentals.</div>
+                </div>
+            </div>
+            <!-- Intermediate Card -->
+            <div class="edu-card">
+                <div class="edu-card-icon">
+                    <i class="fas fa-graduation-cap"></i>
+                </div>
+                <div class="edu-card-content">
+                    <div class="edu-card-row">
+                        <span class="edu-card-title">Intermediate (Mathematics, Physics, Chemistry)</span>
+                        <span class="edu-card-years"><i class="fa-regular fa-calendar"></i> 2017 — 2019</span>
+                    </div>
+                    <div class="edu-card-row">
+                        <a href="https://www.narayanajuniorcolleges.com/" target="_blank" class="edu-card-link">
+                            <i class="fa-solid fa-location-dot"></i> Narayana Junior College, Vijayawada
+                        </a>
+                        <span class="edu-card-grade">Grade: 9.28 CGPA</span>
+                    </div>
+                    <div class="edu-card-sub">Strong foundation in science and mathematics, preparing for higher education in technical fields.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="certificates">
+        <h2 class="centered-heading">Certificates</h2>
+        <!-- Continuous Learning Card -->
+        <div class="cert-info-highlight">
+            <div class="cert-info-icon"><i class="far fa-award"></i></div>
+            <div class="cert-info-title">Continuous Learning</div>
+            <div class="cert-info-text">
+                I believe in continuous professional development and staying updated with the latest technologies.
+                These certifications represent my commitment to excellence and my dedication to mastering both
+                technical skills and professional competencies.
+            </div>
+            <div class="cert-info-stats">
+                <div>
+                    <span class="cert-info-stat-number">3+</span>
+                    <div class="cert-info-stat-label">Certifications</div>
+                </div>
+                <div>
+                    <span class="cert-info-stat-number">85%</span>
+                    <div class="cert-info-stat-label">NPTEL Score</div>
+                </div>
+                <div>
+                    <span class="cert-info-stat-number">100%</span>
+                    <div class="cert-info-stat-label">Completion Rate</div>
+                </div>
+            </div>
+        </div>
+        <!-- Certificate Cards -->
+        <div class="cert-cards-container">
+            <!-- Certificate 1 -->
+            <div class="cert-card">
+                <div class="cert-card-img-wrap">
+                    <img src="./assets/images/nptel.jpg" alt="NPTEL Java Programming Certificate" />
+                    <span class="cert-badge">85% Score</span>
+                </div>
+                <div class="cert-card-content">
+                    <div class="cert-card-row">
+                        <span class="cert-card-icon"><i class="fas fa-certificate"></i></span>
+                        <span>
+                            <div class="cert-card-title">Programming in Java</div>
+                            <div class="cert-card-provider"><a href="#">NPTEL</a></div>
+                        </span>
+                    </div>
+                    <div class="cert-card-desc">
+                        Comprehensive certification covering advanced Java programming concepts, object-oriented programming principles, and software development best practices.
+                    </div>
+                </div>
+            </div>
+            <!-- Certificate 2 -->
+            <div class="cert-card">
+                <div class="cert-card-img-wrap">
+                    <img src="./assets/images/microsoft.jpg" alt="Microsoft Digital Skill Program Certificate" />
+                </div>
+                <div class="cert-card-content">
+                    <div class="cert-card-row">
+                        <span class="cert-card-icon"><i class="fas fa-certificate"></i></span>
+                        <span>
+                            <div class="cert-card-title">MS-Office Certification</div>
+                            <div class="cert-card-provider"><a href="#">Microsoft Digital Skills Program</a></div>
+                        </span>
+                    </div>
+                    <div class="cert-card-desc">
+                        Professional certification in Microsoft Office suite applications including Word, Excel, PowerPoint, and productivity tools for business environments.
+                    </div>
+                </div>
+            </div>
+            <!-- Certificate 3 -->
+            <div class="cert-card">
+                <div class="cert-card-img-wrap">
+                    <img src="./assets/images/college.jpg" alt="Academic Excellence Award" />
+                </div>
+                <div class="cert-card-content">
+                    <div class="cert-card-row">
+                        <span class="cert-card-icon"><i class="fas fa-certificate"></i></span>
+                        <span>
+                            <div class="cert-card-title">Academic Excellence Award</div>
+                            <div class="cert-card-provider"><a href="#">Educational Institution</a></div>
+                        </span>
+                    </div>
+                    <div class="cert-card-desc">
+                        Recognition for outstanding academic performance and dedication to learning, including library excellence and research contributions.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="achievements">
+        <h2 class="centered-heading">Achievements</h2>
+        
+        <!-- ACHIEVEMENT CARDS -->
+        <div class="achievement-cards-list">
+            <!-- 1st Card -->
+            <div class="achievement-card">
+                <div class="achievement-card-icon achievement-icon-star">
+                    <i class="far fa-star"></i>
+                </div>
+                <div class="achievement-card-content">
+                    <div class="achievement-card-title-row">
+                        <div class="achievement-card-title">
+                            NPTEL Java Certification with 85% Score
+                        </div>
+                        <span class="achievement-card-badge">Academic Excellence</span>
+                    </div>
+                    <div class="achievement-card-desc">
+                        Successfully completed the comprehensive Programming in Java course by NPTEL with an outstanding score of 85%, demonstrating strong proficiency in Java programming concepts.
+                    </div>
+                </div>
+            </div>
+
+            <!-- 2nd Card -->
+            <div class="achievement-card">
+                <div class="achievement-card-icon achievement-icon-trophy">
+                    <i class="fas fa-trophy"></i>
+                </div>
+                <div class="achievement-card-content">
+                    <div class="achievement-card-title-row">
+                        <div class="achievement-card-title">
+                            Academic Excellence Award
+                        </div>
+                        <span class="achievement-card-badge">Academic Honor</span>
+                    </div>
+                    <div class="achievement-card-desc">
+                        Received recognition for exceptional academic performance, maintaining high grades throughout the academic journey and demonstrating consistent dedication to learning.
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 3rd Card -->
+            <div class="achievement-card">
+                <div class="achievement-card-icon achievement-icon-target">
+                    <i class="fas fa-bullseye"></i>
+                </div>
+                <div class="achievement-card-content">
+                    <div class="achievement-card-title-row">
+                        <div class="achievement-card-title">
+                            Library Excellence Award
+                        </div>
+                        <span class="achievement-card-badge">Research & Learning</span>
+                    </div>
+                    <div class="achievement-card-desc">
+                        Honored for outstanding contribution to research activities and exceptional utilization of library resources, showcasing commitment to continuous learning and knowledge acquisition.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ACHIEVEMENTS STATS ROW -->
+        <div class="achievement-stats-row">
+            <div class="achievement-stat-card">
+                <div class="achievement-stat-icon"><i class="fas fa-trophy"></i></div>
+                <div class="achievement-stat-title">Academic Awards</div>
+                <div class="achievement-stat-number">3+</div>
+                <div class="achievement-stat-label">Recognition Received</div>
+            </div>
+            <div class="achievement-stat-card">
+                <div class="achievement-stat-icon"><i class="far fa-star"></i></div>
+                <div class="achievement-stat-title">Excellence Score</div>
+                <div class="achievement-stat-number">85%</div>
+                <div class="achievement-stat-label">NPTEL Achievement</div>
+            </div>
+            <div class="achievement-stat-card">
+                <div class="achievement-stat-icon"><i class="fas fa-bullseye"></i></div>
+                <div class="achievement-stat-title">Growth Mindset</div>
+                <div class="achievement-stat-number">100%</div>
+                <div class="achievement-stat-label">Commitment Level</div>
+            </div>
+        </div>
+
+        <!-- PHILOSOPHY CARD -->
+        <div class="achievement-philosophy-card">
+            <div class="achievement-philosophy-title">Philosophy of Excellence</div>
+            <div class="achievement-philosophy-text">
+                These achievements reflect my unwavering commitment to excellence and continuous improvement. I believe that success is not just about reaching goals, but about the dedication, perseverance, and passion invested in the journey of learning and growth.
+            </div>
+        </div>
+    </section>
+
+    <section id="hobbies">
+        <h2 class="centered-heading">Hobbies & Interests</h2>
+        <div class="hobby-cards-grid">
+            <!-- Drawing -->
+            <div class="hobby-card">
+                <div class="hobby-card-icon"><i class="fas fa-palette"></i></div>
+                <div class="hobby-card-title">Drawing</div>
+                <div class="hobby-card-desc">
+                    Creative expression through various art forms, from sketches to digital illustrations, helping me develop attention to detail and creative problem-solving skills.
+                </div>
+                <div class="hobby-card-benefit-title">Benefits &amp; Skills</div>
+                <div class="hobby-card-benefits">
+                    <span>Creativity</span>
+                    <span>Attention to Detail</span>
+                    <span>Visual Thinking</span>
+                    <span>Stress Relief</span>
+                </div>
+            </div>
+            <!-- Playing Carroms -->
+            <div class="hobby-card">
+                <div class="hobby-card-icon"><i class="fas fa-gamepad"></i></div>
+                <div class="hobby-card-title">Playing Carroms</div>
+                <div class="hobby-card-desc">
+                    Strategic board game that enhances precision, concentration, and tactical thinking while providing relaxation and social interaction with friends and family.
+                </div>
+                <div class="hobby-card-benefit-title">Benefits &amp; Skills</div>
+                <div class="hobby-card-benefits">
+                    <span>Strategic Thinking</span>
+                    <span>Hand-Eye Coordination</span>
+                    <span>Patience</span>
+                    <span>Social Skills</span>
+                </div>
+            </div>
+            <!-- Photography -->
+            <div class="hobby-card">
+                <div class="hobby-card-icon"><i class="fas fa-camera"></i></div>
+                <div class="hobby-card-title">Photography</div>
+                <div class="hobby-card-desc">
+                    Capturing moments and exploring the world through different perspectives, which helps develop an eye for composition and storytelling through visual media.
+                </div>
+                <div class="hobby-card-benefit-title">Benefits &amp; Skills</div>
+                <div class="hobby-card-benefits">
+                    <span>Observation Skills</span>
+                    <span>Composition</span>
+                    <span>Technical Skills</span>
+                    <span>Storytelling</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- WORK-LIFE BALANCE PANEL (continued) 
+            <div>
+                <div class="hobby-mini-card-title">Creative Boost</div>
+                <div class="hobby-mini-card-desc">Drawing sparks innovative thinking.</div>
+            </div> -->
+            <div class="hobby-mini-card">
+                <div class="hobby-mini-card-icon"><i class="fas fa-gamepad"></i></div>
+                <div class="hobby-mini-card-title">Strategic Mind</div>
+                <div class="hobby-mini-card-desc">Carroms enhances focus and planning.</div>
+            </div>
+            <div class="hobby-mini-card">
+                <div class="hobby-mini-card-icon"><i class="fas fa-camera"></i></div>
+                <div class="hobby-mini-card-title">Visual Insight</div>
+                <div class="hobby-mini-card-desc">Photography sharpens observation skills.</div>
+            </div>
+        </div>
+    </div>
 </section>
 
-</body>
+<section id="contact">
+    <h2 class="centered-heading">Contact Me</h2>
+    <p><i class="fas fa-envelope" aria-hidden="true" aria-label="Email icon"></i> Email: <a href="mailto:suryasettipalli200901@gmail.com">suryasettipalli200901@gmail.com</a></p>
+    <p><i class="fab fa-linkedin" aria-hidden="true" aria-label="LinkedIn icon"></i> LinkedIn: <a href="https://www.linkedin.com/in/surya-settipalli" target="_blank" rel="noopener noreferrer">Surya Settipalli</a></p>
+    <p><i class="fab fa-github" aria-hidden="true" aria-label="GitHub icon"></i> GitHub: <a href="https://github.com/Surya200901" target="_blank" rel="noopener noreferrer">Surya200901</a></p>
+</section>
+
+<div id="toast-message" class="hidden">Resume downloaded successfully!</div>
+
 <script>
+    // Navigation Toggle for Mobile
     const hamburger = document.querySelector('.hamburger');
     const navLinks = document.querySelector('.nav-links');
-    const mobileFilter = document.getElementById('mobile-filter');
-  
-    // Toggle navigation links on hamburger click
+
     hamburger.addEventListener('click', () => {
-      navLinks.classList.toggle('active');
-      document.body.classList.toggle('no-scroll');
-    });
-  
-    // Navigate to the selected section on mobile filter change
-    mobileFilter.addEventListener('change', (event) => {
-      const sectionId = event.target.value;
-      if (sectionId) {
-        document.querySelector(sectionId).scrollIntoView({ behavior: 'smooth' });
-      }
+        navLinks.classList.toggle('active');
+        document.body.classList.toggle('no-scroll');
     });
 
-  const sections = document.querySelectorAll('section');
-
-    const revealSections = () => {
-        sections.forEach(section => {
-            const rect = section.getBoundingClientRect();
-            if (rect.top <= window.innerHeight * 0.75) {
-                section.classList.add('visible');
-            }
+    // Close nav when clicking a link
+    navLinks.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+            navLinks.classList.remove('active');
+            document.body.classList.remove('no-scroll');
         });
+    });
+
+    // Scroll Animation for Sections
+    const sections = document.querySelectorAll('section');
+    const observerOptions = {
+        threshold: 0.1
     };
 
-    window.addEventListener('scroll', revealSections);
-    revealSections(); // Trigger on load
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            }
+        });
+    }, observerOptions);
 
-    document.getElementById('resume-download').addEventListener('click', function (e) {
-        e.preventDefault(); // Prevent default link behavior to control the flow
-      
-        // Show the toast message
-        const toast = document.getElementById('toast-message');
-        toast.classList.remove('hidden');
-        
-        // Allow download to proceed after showing the toast
+    sections.forEach(section => {
+        observer.observe(section);
+    });
+
+    // Toast Message for Resume Download
+    const resumeLink = document.getElementById('resume-download');
+    const toastMessage = document.getElementById('toast-message');
+
+    resumeLink.addEventListener('click', () => {
+        toastMessage.textContent = 'Resume downloaded successfully!';
+        toastMessage.style.display = 'block';
+        toastMessage.style.opacity = '1';
+
         setTimeout(() => {
-          window.location.href = e.target.href; // Trigger the download
-          // Hide the toast after 3 seconds
-          setTimeout(() => {
-            toast.classList.add('hidden');
-          }, 3000);
-        }, 500); // Simulate a delay before starting download
-      });
-      
-      
-
+            toastMessage.style.opacity = '0';
+            setTimeout(() => {
+                toastMessage.style.display = 'none';
+            }, 300);
+        }, 3000);
+    });
 </script>
-
+</body>
 </html>
