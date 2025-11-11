@@ -2255,25 +2255,23 @@
                 </div>
                 <div class="date">March 2025 - Present</div>
             </div>
+            <!-- Auto-updated Experience Number -->
+            <div class="experience-lifetime">
+                <span id="experience-amount"></span>
+            </div>
             <ul>
-                <li>
-                    Contributed to the development of the Instrument Panel Cluster (IPC) in infotainment systems for automotive applications, primarily for General Motors
-                </li>
-                <li>Designed and built responsive user interfaces using XML tailored for embedded automotive environments</li>
-                <li>Implemented backend logic in C++ to manage core system functionalities and ensure smooth communication between UI components and system modules</li>
-                <li>Collaborated with cross-functional teams to develop and test real-time features, following automotive industry standards</li>
-                <li>Gained hands-on experience with C++ in a production-level automotive software development lifecycle</li>
+                <li>Contributed to the development of automotive infotainment systems.</li>
+                <li>Designed and built responsive user interfaces for embedded environments.</li>
+                <li>Implemented backend logic in C and C++ for system functionalities.</li>
+                <!-- Add more accomplishments as needed -->
             </ul>
             <div class="skills-tags">
-                <span class="skill-tag">C++</span>
+                <span class="skill-tag">C</span>
                 <span class="skill-tag">XML</span>
                 <span class="skill-tag">Automotive Systems</span>
-                <span class="skill-tag">Real-time Development</span>
-                <span class="skill-tag">IPC</span>
-                <span class="skill-tag">Infotainment</span>
             </div>
         </div>
-    </section>
+    </section>      
 
    <!-- <section id="resume" class="resume-section">
         <h2 class="centered-heading">My Resume</h2>
@@ -3010,6 +3008,31 @@
             localStorage.setItem('theme', 'light');
         }
     });
+
+    function updateExperience() {
+    // March is month 2 (0-based for JavaScript Date)
+    const startDate = new Date(2025, 2, 1); // March 1, 2025
+    const now = new Date();
+
+    let months = (now.getFullYear() - startDate.getFullYear()) * 12 + (now.getMonth() - startDate.getMonth());
+    let experienceText = "";
+    if (months < 12) {
+        experienceText = `${months} Month${months === 1 ? "" : "s"} Experience`;
+    } else {
+        let years = Math.floor(months / 12);
+        let extraMonths = months % 12;
+        experienceText = `${years} Year${years > 1 ? "s" : ""}`;
+        if (extraMonths > 0) {
+            experienceText += `, ${extraMonths} Month${extraMonths > 1 ? "s" : ""}`;
+        }
+        experienceText += " Experience";
+    }
+    const elem = document.getElementById("experience-amount");
+    if (elem) {
+        elem.textContent = experienceText;
+    }
+}
+document.addEventListener("DOMContentLoaded", updateExperience);
 
 
 </script>
